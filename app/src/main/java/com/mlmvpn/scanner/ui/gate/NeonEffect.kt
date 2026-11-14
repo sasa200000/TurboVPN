@@ -91,7 +91,7 @@ fun rememberSmoothNeonColor(context: android.content.Context): Color {
             tick.intValue++
         }
     }
-    return androidx.compose.animation.core.animateColorAsState(
+    return androidx.compose.animation.animateColorAsState(
         targetValue = colors[tick.intValue % colors.size],
         animationSpec = androidx.compose.animation.core.tween(950),
         label = "neonSecondly",
