@@ -220,7 +220,7 @@ internal class SharedBridge(internal val scope: CoroutineScope, internal val han
             internalEthernetMTU -= CHACHA20_POLY1305_TAG_SIZE
             internalEthernetMTU -= ETHERNET_HEADER_SIZE
         } else {
-            // MLMVPN: was ETHERNET_MAX_MTU (1500), on the reasoning that "TCP connection will
+            // TurboVPN: was ETHERNET_MAX_MTU (1500), on the reasoning that "TCP connection will
             // optimize". It does not. The tunnel is Ethernet inside SoftEther inside TLS
             // inside TCP, so a 1500-byte inner packet cannot fit the 1500-byte outer path and
             // every one of them is fragmented — classic TCP-in-TCP, and measured at ~67 kbps.

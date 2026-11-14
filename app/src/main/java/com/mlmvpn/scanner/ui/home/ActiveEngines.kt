@@ -214,7 +214,7 @@ object ActiveEngines {
     /**
      * The saved list is no longer the whole answer.
      *
-     * Servers from the shared MLMVPN pool are deliberately never written to disk, so connecting
+     * Servers from the shared TurboVPN pool are deliberately never written to disk, so connecting
      * to one left this returning false and the id fell through to `else -> "nodes"` -- the V2Ray
      * lamp came on for a Quick Connect session. The marker Quick Connect leaves when it starts a
      * tunnel covers both cases and is a cheap preference read, so it goes first.

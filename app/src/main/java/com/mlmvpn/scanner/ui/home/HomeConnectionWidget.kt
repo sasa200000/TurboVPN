@@ -171,7 +171,16 @@ internal fun HomeConnectionWidget(
                 Row(modifier = Modifier.fillMaxWidth().weight(1f), verticalAlignment = Alignment.CenterVertically) {
                     Box(modifier = Modifier.weight(1f).fillMaxSize()) {
                         when {
-                            conn.up && !compact -> LiveChart(traffic, green, Color(0xFF64D2FF), Modifier.fillMaxSize())
+                            conn.up && !compact -> {
+                                // TurboVPN: the live wave chart cycles through the neon preset
+                                // every second; OFF falls back to the fixed green/blue.
+                                val chartCtx = androidx.compose.ui.platform.LocalContext.current
+                                val cd = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(chartCtx)
+                                    .takeIf { it != androidx.compose.ui.graphics.Color.Unspecified } ?: green
+                                val cu = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(chartCtx)
+                                    .takeIf { it != androidx.compose.ui.graphics.Color.Unspecified } ?: Color(0xFF64D2FF)
+                                LiveChart(traffic, cd, cu, Modifier.fillMaxSize())
+                            }
                             conn.up -> Unit
                             conn.busy -> Text(
                                 tr("در حال برقراری اتصال…", "Connecting…"),
@@ -229,7 +238,7 @@ private fun Header(conn: WidgetLive.Conn, app: HomeApp?, compact: Boolean) {
         Spacer(Modifier.width(10.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                app?.let { WidgetPainter.labelOf(it) } ?: "MLMVPN",
+                app?.let { WidgetPainter.labelOf(it) } ?: "TurboVPN",
                 color = Color.White, fontSize = if (compact) 15.sp else 17.sp, fontWeight = FontWeight.Bold,
                 maxLines = 1, overflow = TextOverflow.Ellipsis,
             )
@@ -277,9 +286,16 @@ private fun StatusPill(conn: WidgetLive.Conn) {
 
 @Composable
 private fun Footer(traffic: WidgetLive.Traffic) {
+    // TurboVPN: the ↓/↑ stat colours cycle through the user's neon preset, changing
+    // every second. OFF falls back to the fixed green/blue.
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    val downColor = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(ctx)
+        .takeIf { it != androidx.compose.ui.graphics.Color.Unspecified } ?: Color(0xFF34C759)
+    val upColor = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(ctx)
+        .takeIf { it != androidx.compose.ui.graphics.Color.Unspecified } ?: Color(0xFF64D2FF)
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        Stat("↓", WidgetFormat.rate(traffic.rxRate), Color(0xFF34C759))
-        Stat("↑", WidgetFormat.rate(traffic.txRate), Color(0xFF64D2FF))
+        Stat("↓", WidgetFormat.rate(traffic.rxRate), downColor)
+        Stat("↑", WidgetFormat.rate(traffic.txRate), upColor)
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(tr("مصرف نشست ", "Session "), color = Color.White.copy(alpha = 0.65f), fontSize = 12.sp)
             Text(WidgetFormat.bytes(traffic.rx + traffic.tx), color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, style = tabular())
@@ -402,7 +418,7 @@ private fun PowerButton(state: Int, enabled: Boolean, size: Dp, onClick: () -> U
         1 -> Color(0xFFFF9F0A)
         else -> Color(0xFF0A84FF)
     }
-    // OilVPN: rain-of-light around the connect button. Colours cycle through the
+    // TurboVPN: rain-of-light around the connect button. Colours cycle through the
     // user's neon preset (Settings > Neon Light Effect) every second; OFF turns it off.
     val context = androidx.compose.ui.platform.LocalContext.current
     val neonColors = com.mlmvpn.scanner.ui.gate.rememberNeonColors(context)

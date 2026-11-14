@@ -11,15 +11,15 @@ import kotlin.math.abs
 /**
  * Subscription code store.
  *
- * Codes are stored in filesDir/oilvpn_codes.json so the admin panel can list,
+ * Codes are stored in filesDir/turbovpn_codes.json so the admin panel can list,
  * add and revoke them without app restarts. A valid code activates the
  * device's subscription; one subscription per install. When the expiry passes
  * the app re-locks (checked on every launch and on resume).
  */
 object SubscriptionStore {
 
-    private const val CODES_FILE = "oilvpn_codes.json"
-    private const val ADMIN_PREFS = "oilvpn_admin"
+    private const val CODES_FILE = "turbovpn_codes.json"
+    private const val ADMIN_PREFS = "turbovpn_admin"
     private const val PREF_SECRET = "admin_secret"
 
     private const val DAY = 24 * 60 * 60 * 1000L

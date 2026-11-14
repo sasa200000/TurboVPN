@@ -50,7 +50,7 @@ object ProtonApi {
     private const val CLIENT_ID = "web-vpn-settings"
     const val FALLBACK_VERSION = "5.0.421.0"
     /** What the configs are listed as in the account's dashboard. */
-    const val DEVICE_NAME = "MLM VPN"
+    const val DEVICE_NAME = "Turbo VPN"
     /** A ceiling, not a target: every server the plan has is taken (116 free ones when measured). */
     const val MAX_SERVERS = 300
     /** A key this close to its expiry is replaced, and every config made again with the new one. */

@@ -713,7 +713,7 @@ class UrnetworkProcess(
             "-account", UrnetworkEngine.accountFile(context).absolutePath,
             "-socks", "127.0.0.1:$socksPort",
             "-memory", memoryMb.toString(),
-            "-desc", "MLMVPN · ${android.os.Build.MODEL}".take(60),
+            "-desc", "TurboVPN · ${android.os.Build.MODEL}".take(60),
             "-dns", com.mlmvpn.core.lantern.LanternEngine.systemDns(context).joinToString(","),
             "-country", UrnetworkEngine.networkCountry(context),
             "-control",

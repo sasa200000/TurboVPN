@@ -122,7 +122,7 @@ class AmzSourceRepo(app: Context) {
         val c = (if (proxy != null) URL(url).openConnection(proxy) else URL(url).openConnection()) as HttpURLConnection
         c.connectTimeout = minOf(timeout, 10_000); c.readTimeout = timeout
         c.instanceFollowRedirects = true
-        c.setRequestProperty("User-Agent", "MLMVPN-Amnezia")
+        c.setRequestProperty("User-Agent", "TurboVPN-Amnezia")
         etag?.let { c.setRequestProperty("If-None-Match", it) }
         try {
             return when (c.responseCode) {

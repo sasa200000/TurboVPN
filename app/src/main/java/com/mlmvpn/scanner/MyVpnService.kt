@@ -363,7 +363,7 @@ class MyVpnService : VpnService() {
         try {
             if (wakeLock?.isHeld == true) wakeLock?.release()
             val powerManager = getSystemService(android.content.Context.POWER_SERVICE) as android.os.PowerManager
-            wakeLock = powerManager.newWakeLock(android.os.PowerManager.PARTIAL_WAKE_LOCK, "MLMVPN::VpnWakeLock")
+            wakeLock = powerManager.newWakeLock(android.os.PowerManager.PARTIAL_WAKE_LOCK, "TurboVPN::VpnWakeLock")
             // Not reference-counted: acquireWakeLock()/releaseWakeLock() are called repeatedly
             // from the traffic monitor below, and with the default counting behaviour a run of
             // acquires would need an equal run of releases to actually let the CPU sleep --

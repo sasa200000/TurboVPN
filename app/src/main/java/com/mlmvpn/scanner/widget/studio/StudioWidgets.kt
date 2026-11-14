@@ -111,7 +111,7 @@ object StudioPin {
     /**
      * Asks the launcher to place [template] in its own size. The confirmation the launcher shows
      * carries the design itself as its preview. False when the launcher cannot do it -- the caller
-     * then explains the manual way (long-press the home screen, Widgets, MLMVPN).
+     * then explains the manual way (long-press the home screen, Widgets, TurboVPN).
      */
     fun request(context: Context, template: WidgetTemplate): Boolean {
         if (Build.VERSION.SDK_INT < 26 || !canPin(context)) return false

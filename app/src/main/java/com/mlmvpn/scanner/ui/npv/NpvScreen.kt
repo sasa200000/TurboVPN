@@ -367,8 +367,8 @@ private fun MainPage(
                 })
         }
         SettingsFooter(tr(
-            "لینک‌های استاندارد با موتور Xray همین برنامه وصل می‌شوند. فایل‌های npvt و npvs با کلید برنامهٔ NPV Tunnel رمز شده‌اند و آن کلید منتشر نشده؛ این فایل‌ها نگه داشته و با یک لمس در NPV Tunnel باز می‌شوند. فایل را از تلگرام با «باز کردن با MLMVPN» هم می‌شود فرستاد. MLMVPN وابستگی رسمی به NPV Tunnel ندارد.",
-            "Standard links connect on this app's Xray engine. npvt and npvs files are encrypted with NPV Tunnel's key, which is not published; they are kept and open in NPV Tunnel with one tap. Files can also come from Telegram with «Open with MLMVPN». MLMVPN is not affiliated with NPV Tunnel.",
+            "لینک‌های استاندارد با موتور Xray همین برنامه وصل می‌شوند. فایل‌های npvt و npvs با کلید برنامهٔ NPV Tunnel رمز شده‌اند و آن کلید منتشر نشده؛ این فایل‌ها نگه داشته و با یک لمس در NPV Tunnel باز می‌شوند. فایل را از تلگرام با «باز کردن با TurboVPN» هم می‌شود فرستاد. TurboVPN وابستگی رسمی به NPV Tunnel ندارد.",
+            "Standard links connect on this app's Xray engine. npvt and npvs files are encrypted with NPV Tunnel's key, which is not published; they are kept and open in NPV Tunnel with one tap. Files can also come from Telegram with «Open with TurboVPN». TurboVPN is not affiliated with NPV Tunnel.",
         ))
         Spacer(Modifier.height(36.dp))
     }

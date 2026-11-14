@@ -48,7 +48,7 @@ class GerehImportActivity : Activity() {
         val why = problems.distinct().joinToString("\n").takeIf { it.isNotBlank() }
         if (moved.isEmpty()) {
             AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Dialog_Alert)
-                .setMessage(why ?: tr("چیز تازه‌ای نبود: همه از پیش در MLMVPN هستند.", "Nothing new: they are all in MLMVPN already."))
+                .setMessage(why ?: tr("چیز تازه‌ای نبود: همه از پیش در TurboVPN هستند.", "Nothing new: they are all in TurboVPN already."))
                 .setPositiveButton(tr("باشه", "OK")) { _, _ -> finish() }
                 .setOnCancelListener { finish() }
                 .show()

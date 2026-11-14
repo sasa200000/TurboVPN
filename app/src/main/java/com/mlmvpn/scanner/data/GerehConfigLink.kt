@@ -38,7 +38,7 @@ object GerehConfigLink {
         // the measurement process is reached from here too
         CombineEngine.bind(app)
         GerehConfigs.set(object : GerehConfigs.Hook {
-            override fun appName() = "MLMVPN"
+            override fun appName() = "TurboVPN"
             override fun find(text: String, fileName: String?, filePath: String?): List<GerehConfigs.Config> = GerehConfigLink.find(app, text, fileName, filePath)
             override fun delay(c: GerehConfigs.Config): Long = measure(c)
             override fun transfer(activity: Activity, configs: List<GerehConfigs.Config>) = GerehImportActivity.start(activity, configs)

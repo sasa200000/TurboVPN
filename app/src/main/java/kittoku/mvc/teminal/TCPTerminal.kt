@@ -35,7 +35,7 @@ internal class TCPTerminal(private val bridge: SharedBridge) {
     private val mutex = Mutex()
 
     init {
-        // MLMVPN: accept self-signed server certificates.
+        // TurboVPN: accept self-signed server certificates.
         //
         // SoftEther authenticates the session through the hub credentials and the watermark
         // exchange, not through PKI, and the upstream client does not require a trusted chain
@@ -54,7 +54,7 @@ internal class TCPTerminal(private val bridge: SharedBridge) {
             .apply { init(null, trustAll, java.security.SecureRandom()) }
             .socketFactory
 
-        // MLMVPN: bounded connect + handshake.
+        // TurboVPN: bounded connect + handshake.
         //
         // createSocket(host, port) connects with no timeout and startHandshake() then blocks
         // with none either, so a server that never answers hangs this constructor forever —
@@ -80,7 +80,7 @@ internal class TCPTerminal(private val bridge: SharedBridge) {
             }.toTypedArray()
         }
 
-        // MLMVPN: size the socket for the bandwidth-delay product before the handshake.
+        // TurboVPN: size the socket for the bandwidth-delay product before the handshake.
         //
         // These relays sit ~230 ms away, so the default buffers cap throughput long before the
         // link does: at 230 ms RTT a 16 KB window is worth well under a megabit. Must be set
@@ -135,7 +135,7 @@ internal class TCPTerminal(private val bridge: SharedBridge) {
     private fun extendStream(buffer: ByteBuffer) {
         val payloadLengthBeforeExtended = buffer.remaining()
 
-        // MLMVPN: slide as soon as the free tail is small, not only when it is exactly zero.
+        // TurboVPN: slide as soon as the free tail is small, not only when it is exactly zero.
         //
         // receiveStream() reads into `capacity - limit` bytes. As the limit creeps toward the
         // end of the buffer that window shrinks to almost nothing, so the socket gets read a

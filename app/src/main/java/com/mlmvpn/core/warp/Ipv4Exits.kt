@@ -420,7 +420,7 @@ object Ipv4Exits {
                 rtt = ms()
                 if (rttOnly) return ProbeResult(true, rtt)
                 sock = dial(p.ip, p.port, via, timeoutMs)
-                sock.getOutputStream().write("GET http://$TRACE_HOST/cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: MLMVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
+                sock.getOutputStream().write("GET http://$TRACE_HOST/cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: TurboVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
                 sock.getOutputStream().flush()
                 body = readAll(sock.getInputStream())
             } else {
@@ -428,7 +428,7 @@ object Ipv4Exits {
                 val opened = if (p.kind == Kind.SOCKS4) socks4a(sock, TRACE_HOST, 80) else socks5(sock, TRACE_HOST, 80)
                 if (!opened) return ProbeResult(false, ms(), error = "SOCKS بسته")
                 if (rttOnly) return ProbeResult(true, ms())
-                sock.getOutputStream().write("GET /cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: MLMVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
+                sock.getOutputStream().write("GET /cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: TurboVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
                 sock.getOutputStream().flush()
                 body = readAll(sock.getInputStream())
                 rtt = ms()
@@ -458,7 +458,7 @@ object Ipv4Exits {
                 .connectTimeout(timeoutMs, TimeUnit.MILLISECONDS).readTimeout(timeoutMs, TimeUnit.MILLISECONDS)
                 .callTimeout(timeoutMs + 3_000, TimeUnit.MILLISECONDS)
                 .build()
-                .newCall(Request.Builder().url("https://www.cloudflare.com/cdn-cgi/trace").header("User-Agent", "MLMVPN").build())
+                .newCall(Request.Builder().url("https://www.cloudflare.com/cdn-cgi/trace").header("User-Agent", "TurboVPN").build())
                 .execute().use { r ->
                     val body = r.body?.string().orEmpty()
                     val loc = field(body, "loc")?.uppercase(Locale.US)

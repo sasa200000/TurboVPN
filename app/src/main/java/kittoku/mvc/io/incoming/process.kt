@@ -153,7 +153,7 @@ internal suspend fun IncomingManager.relayHttpMessage(buffer: ByteBuffer) {
             buffer.get(body, writeStart, writeSize)
             writeStart += writeSize
 
-            // MLMVPN: compare what has been written IN TOTAL, not the size of the chunk that
+            // TurboVPN: compare what has been written IN TOTAL, not the size of the chunk that
             // just arrived. With the original `writeSize == body.size` the loop only ever
             // terminated when the whole body turned up in a single read; a split body left it
             // spinning with writeSize=0, the buffer desynchronised, and the next frame header

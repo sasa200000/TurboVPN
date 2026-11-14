@@ -179,7 +179,7 @@ class MlmDeployer(private val context: Context) {
                 val quotaHit = createErrorInfo.contains("System limit reached", ignoreCase = true) ||
                     createErrorInfo.contains("databases per account", ignoreCase = true)
                 val msg = if (quotaHit) {
-                    "Your Cloudflare account has reached its D1 database limit (max 10 on the Free plan), and none of the existing ones belong to MLM VPN, so a new one can't be created.\n\n" +
+                    "Your Cloudflare account has reached its D1 database limit (max 10 on the Free plan), and none of the existing ones belong to Turbo VPN, so a new one can't be created.\n\n" +
                         "Existing databases on this account:\n" + existingDbNames.joinToString("\n") { "- $it" } + "\n\n" +
                         "Delete one you don't need at dash.cloudflare.com -> Workers & Pages -> D1, then try deploying again."
                 } else {

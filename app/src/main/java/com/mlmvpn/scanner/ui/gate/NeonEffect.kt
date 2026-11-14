@@ -58,6 +58,46 @@ fun rememberNeonColors(context: android.content.Context): List<Color> {
     return style.colors
 }
 
+/**
+ * A composable colour that changes every second, cycling through the user's neon preset.
+ * Returns Color.Unspecified when the preset is OFF, so callers can fall back to their
+ * own static colour. Used for the connect ring after connecting, the traffic stats
+ * and the live wave chart.
+ */
+@Composable
+fun rememberSecondlyNeonColor(context: android.content.Context): Color {
+    val colors = rememberNeonColors(context)
+    if (colors.isEmpty()) return Color.Unspecified
+    val tick = remember { mutableIntStateOf(0) }
+    LaunchedEffect(colors) {
+        while (true) {
+            kotlinx.coroutines.delay(1_000)
+            tick.intValue++
+        }
+    }
+    val idx = tick.intValue % colors.size
+    return colors[idx]
+}
+
+/** Smooth animated version: interpolates between colours over the second, never snaps. */
+@Composable
+fun rememberSmoothNeonColor(context: android.content.Context): Color {
+    val colors = rememberNeonColors(context)
+    if (colors.isEmpty()) return Color.Unspecified
+    val tick = remember { mutableIntStateOf(0) }
+    LaunchedEffect(colors) {
+        while (true) {
+            kotlinx.coroutines.delay(1_000)
+            tick.intValue++
+        }
+    }
+    return androidx.compose.animation.core.animateColorAsState(
+        targetValue = colors[tick.intValue % colors.size],
+        animationSpec = androidx.compose.animation.core.tween(950),
+        label = "neonSecondly",
+    ).value
+}
+
 @Composable
 fun Modifier.neonBorder(
     colors: List<Color>,

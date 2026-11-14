@@ -27,7 +27,7 @@ import com.mlmvpn.scanner.utils.S
  * Fetches free public VLESS/VMess/Trojan/Shadowsocks configs, tests them for a real proxied
  * connection, and returns only the ones that actually work. Modeled on how apps like Kingo VPN
  * source their lists: aggregate a handful of hourly/frequently updated public subscription repos
- * on GitHub. Nothing here is MLM VPN's own infrastructure -- these are the same public
+ * on GitHub. Nothing here is Turbo VPN's own infrastructure -- these are the same public
  * raw.githubusercontent.com lists Kingo itself pulls from, fetched directly instead of relying on
  * Kingo's own merge/rename step.
  */

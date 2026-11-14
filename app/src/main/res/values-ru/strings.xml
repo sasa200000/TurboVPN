@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OilVPN</string>
+    <string name="app_name">TurboVPN</string>
     <string name="cloud_no_account_connected">Аккаунт не подключён</string>
     <string name="cloud_press_add_button">Нажмите кнопку «Добавить», чтобы получить конфиги.</string>
     <string name="cloud_add_account">Добавить аккаунт</string>
@@ -124,7 +124,7 @@
     <string name="scanner_copy_ips_button">Копировать IP</string>
     <string name="scanner_vpn_active_warning">Обнаружен активный VPN</string>
     <string name="scanner_vpn_active_desc">В системе обнаружен активный VPN. Для точных тестов (Real Delay) трафик должен идти мимо VPN.\nОтключите текущий VPN, чтобы продолжить проверку.</string>
-    <string name="scanner_turn_off_vpn_and_scan">Отключить OilVPN и сканировать</string>
+    <string name="scanner_turn_off_vpn_and_scan">Отключить TurboVPN и сканировать</string>
     <string name="scanner_understood">Понятно</string>
     <string name="scanner_cancel">Отмена</string>
     <string name="scanner_test_archive_ips_health">Проверить IP из архива</string>
@@ -259,7 +259,7 @@
     <string name="common_cancel">Отмена</string>
     <string name="common_close">Закрыть</string>
     <string name="about_title">О нас</string>
-    <string name="about_desc">Название OilVPN происходит от его продвинутой архитектуры ядра — Multi-Layer Multiplexer (многоуровневый мультиплексор). Вместо одного соединения мы создали сверхумную многоуровневую платформу и раздвинули границы привычных сетевых технологий. Одновременно управляя несколькими мощными движками обхода цензуры, приложение динамически направляет ваш трафик по самым быстрым и безопасным доступным путям. Наша миссия — дать стабильную и сверхбыструю сеть, которая преодолевает интернет-ограничения на нескольких уровнях и дарит по-настоящему свободный интернет.</string>
+    <string name="about_desc">Название TurboVPN происходит от его продвинутой архитектуры ядра — Multi-Layer Multiplexer (многоуровневый мультиплексор). Вместо одного соединения мы создали сверхумную многоуровневую платформу и раздвинули границы привычных сетевых технологий. Одновременно управляя несколькими мощными движками обхода цензуры, приложение динамически направляет ваш трафик по самым быстрым и безопасным доступным путям. Наша миссия — дать стабильную и сверхбыструю сеть, которая преодолевает интернет-ограничения на нескольких уровнях и дарит по-настоящему свободный интернет.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_github">GitHub</string>
     <string name="about_youtube">YouTube</string>
@@ -765,7 +765,7 @@
     <string name="vpn_disconnected">Отключено</string>
     <string name="vpn_kill_switch">Kill switch</string>
     <string name="vpn_reconnect">Переподключить</string>
-    <string name="tile_label_vpn">OilVPN</string>
+    <string name="tile_label_vpn">TurboVPN</string>
     <string name="tile_label_tunnel">Mlm Tunnel</string>
     <string name="wg_data_check">Проверять, что данные действительно идут</string>
     <string name="wg_data_check_hint">Ждёт, пока пройдёт реальный трафик, прежде чем сообщить об успехе. У некоторых операторов рукопожатие WireGuard проходит, а затем все пакеты данных отбрасываются, поэтому одно рукопожатие ничего не доказывает. Без этой проверки подключение быстрее, но «подключено» значит меньше.</string>
@@ -1145,7 +1145,7 @@
     <string name="minutes_ago"> мин назад</string>
     <string name="mlm_account_not_found">Аккаунт MLM не найден!</string>
     <string name="mlm_gateway">MLM Gateway</string>
-    <string name="mlmvpn_private_list">Приватный список OilVPN · </string>
+    <string name="mlmvpn_private_list">Приватный список TurboVPN · </string>
     <string name="months_ago"> мес. назад</string>
     <string name="move_configs_to_the_connection_page">Перенести конфиги на страницу подключения: %1$s</string>
     <string name="my_list">Мой список</string>
@@ -1711,7 +1711,7 @@
     <string name="save_and_fetch">Сохранить и получить</string>
     <string name="save_as_a_file">Сохранить в файл</string>
     <string name="save_as_a_file_the_file_is">«Сохранить в файл» — файл записывается точно и полностью. </string>
-    <string name="saved_to_your_downloads_folder_mlmvpn_relay">Сохранено в папку «Загрузки»: OilVPN_relay.gs</string>
+    <string name="saved_to_your_downloads_folder_mlmvpn_relay">Сохранено в папку «Загрузки»: TurboVPN_relay.gs</string>
     <string name="scan_qr">Сканировать QR</string>
     <string name="scan_the_config_s_qr_code">Сканировать QR-код конфига</string>
     <string name="scanner">Сканер · </string>
@@ -2457,7 +2457,7 @@
     <string name="manual_2">Вручную</string>
     <string name="means_throwing_away_the_very_thing_that">означает выбросить именно то, что показывает проблему.</string>
     <string name="medium_2">Средне</string>
-    <string name="mlmvpn_private_list_2">Приватный список OilVPN</string>
+    <string name="mlmvpn_private_list_2">Приватный список TurboVPN</string>
     <string name="myself_you_can_leave_it_at_any">сам; выйти из него можно в любой момент.</string>
     <string name="network_filtering_a_job_for_the_vpn">Сетевая фильтрация (задача VPN, а не этого раздела)</string>
     <string name="no_bridge_straight_to_the_tor_network">Без моста, напрямую в сеть Tor. Для сети, которая не заблокировала Tor</string>
@@ -2618,7 +2618,7 @@
     <string name="wireguard_game_trial">WireGuard (пробная игровая)</string>
     <string name="wireguard_is_active">WireGuard активен</string>
     <string name="wireguard_scan">Сканирование WireGuard</string>
-    <string name="with_mlmvpn_stay_connected_always_whatever_the">С OilVPN всегда оставайтесь на связи, в любых условиях</string>
+    <string name="with_mlmvpn_stay_connected_always_whatever_the">С TurboVPN всегда оставайтесь на связи, в любых условиях</string>
     <string name="with_no_filter_every_server_in_this">Без фильтра показываются все серверы этого списка. Можно выбрать несколько стран </string>
     <string name="word_processing">Обработка текста</string>
     <string name="working_ips_were_found_but_no_combination">Рабочие IP найдены, но ни одной комбинации не создано. Группа, выбранная для объединения, </string>
@@ -2738,7 +2738,7 @@
     <string name="in_quick_connect_i_get_no_responding">В быстром подключении я получаю «не найден отвечающий сервер». Что делать?</string>
     <string name="in_quick_connect_what_does_the_green">Что означает зелёная галочка рядом с именем сервера в быстром подключении?</string>
     <string name="in_the_nhn_section_when_i_create">Почему в разделе NHN, когда я создаю пользователя с ограничением трафика и времени, полученный конфиг не работает?</string>
-    <string name="in_your_phone_s_settings_search_type">В поиске настроек телефона введите «надёжные учётные данные» или «сертификат», затем выберите вкладку «Пользователь». Наш сертификат там называется «MLM VPN Local CA …»; нажмите на него и выберите «Удалить». Точный путь для Samsung, Xiaomi, Pixel, Huawei, Oppo/Realme и Vivo отдельно расписан в уроке 17. Если хотите удалить сразу все установленные сертификаты, на той же странице есть «Очистить учётные данные» — но учтите, что это удалит их все, а не только наш. После удаления галочка второго шага в папке domain fronting снимется сама.</string>
+    <string name="in_your_phone_s_settings_search_type">В поиске настроек телефона введите «надёжные учётные данные» или «сертификат», затем выберите вкладку «Пользователь». Наш сертификат там называется «Turbo VPN Local CA …»; нажмите на него и выберите «Удалить». Точный путь для Samsung, Xiaomi, Pixel, Huawei, Oppo/Realme и Vivo отдельно расписан в уроке 17. Если хотите удалить сразу все установленные сертификаты, на той же странице есть «Очистить учётные данные» — но учтите, что это удалит их все, а не только наш. После удаления галочка второго шага в папке domain fronting снимется сама.</string>
     <string name="iran_configs_1_to_8_no_server">• **Иранские конфиги (1–8):** без сервера, для обычных сайтов и приложений. Первое, что стоит попробовать.\n• **Облачная панель (BPB / EDG / Nahan):** ваш собственный частный сервер в вашем аккаунте Cloudflare; самый надёжный вариант для любых приложений, но его нужно один раз развернуть.\n• **Domain fronting:** без сервера и бесплатно, но только для браузера и требует установки сертификата.\n• **Вкладка «Игры»:** для снижения пинга в играх, а не для открытия сайтов.\n• **Экстренный режим:** когда заблокировано всё и вы не можете даже получить конфиг.</string>
     <string name="is_installing_this_certificate_dangerous_for_my">Опасна ли установка этого сертификата для телефона? Можно ли установить сертификат друга?</string>
     <string name="is_there_a_per_app_setting_choosing">Есть ли «настройка по приложениям» (выбор, какие приложения идут через VPN)?</string>
@@ -5610,7 +5610,7 @@
     <string name="gereh_wipe_remove">Полностью удалить Gereh</string>
     <string name="gereh_wipe_clear_info">Все сообщения, фото, видео и файлы Gereh будут удалены с этого телефона, вместе с постами каналов Telegram, на которые вы подписаны в Gereh. Аккаунт, контакты, группы и каналы останутся (пустыми), а официальные канал и группа сохранят свои посты. Это нельзя отменить.</string>
     <string name="gereh_wipe_account_info">Сначала телефон выйдет из всех ваших групп и каналов (участники это увидят), затем всё, что есть у Gereh на нём, будет удалено: аккаунт, контакты, сообщения и файлы. У Gereh нет сервера, поэтому это весь ваш аккаунт; контакты сохранят вашу старую карточку. При следующем открытии Gereh создаст новый аккаунт. Это нельзя отменить.</string>
-    <string name="gereh_wipe_remove_info">Как удаление аккаунта, и Gereh будет убран из OilVPN: ни плитки, ни уведомлений, ни работы в фоне, как будто его никогда не было. Программные файлы Gereh (около 36 МБ) входят в установленное приложение, и Android не позволяет приложению их удалить. Вернуть: Настройки › Вернуть Gereh.</string>
+    <string name="gereh_wipe_remove_info">Как удаление аккаунта, и Gereh будет убран из TurboVPN: ни плитки, ни уведомлений, ни работы в фоне, как будто его никогда не было. Программные файлы Gereh (около 36 МБ) входят в установленное приложение, и Android не позволяет приложению их удалить. Вернуть: Настройки › Вернуть Gereh.</string>
     <string name="gereh_wipe_yes">Удалить</string>
     <string name="gereh_wipe_no">Отмена</string>
     <string name="gereh_wipe_clearing">Очистка данных Gereh…</string>

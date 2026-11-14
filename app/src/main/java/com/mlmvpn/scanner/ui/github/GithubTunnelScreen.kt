@@ -1078,7 +1078,7 @@ private fun accountState(a: GtAccount): String = when {
 private fun copy(context: Context, text: String) {
     runCatching {
         val cm = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        cm.setPrimaryClip(ClipData.newPlainText("MLMVPN", text))
+        cm.setPrimaryClip(ClipData.newPlainText("TurboVPN", text))
         android.widget.Toast.makeText(context, S(R.string.gt_copied), android.widget.Toast.LENGTH_SHORT).show()
     }
 }

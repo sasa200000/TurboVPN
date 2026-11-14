@@ -34,7 +34,7 @@ class MlmApp : org.telegram.messenger.ApplicationLoader() {
                 override fun latest(): String? = com.mlmvpn.scanner.update.UpdateChecker.latestKnown(app)
                 override fun openUpdate(context: android.content.Context): Boolean = false
             })
-            // the heart beside Gereh's menu: MLMVPN's support page
+            // the heart beside Gereh's menu: TurboVPN's support page
             org.mlmvpn.chat.bridge.GerehHost.setSupport("https://donito.me/ehsan2noven")
             super.onCreate() // Telegram's own start-up (ApplicationLoader)
             // a stopped storage queue left every chat loading for good (S26, 27 Oct 2026)
@@ -69,7 +69,7 @@ class MlmApp : org.telegram.messenger.ApplicationLoader() {
         // service after a reboot), and the app stood frozen at launch (ANR #542, #543).
         if (mainProcess) Thread({ runCatching { com.mlmvpn.scanner.data.CfIdentityFiles.sealKnown(this) } }, "seal-identities").start()
         // «گره» listens for messages while the app is open or not (its own foreground service in the
-        // :chat process); started here too, so opening MLMVPN is enough after an update or a kill.
+        // :chat process); started here too, so opening TurboVPN is enough after an update or a kill.
         if (mainProcess) org.mlmvpn.chat.bridge.GerehService.startIfReady(this)
         // Which Cloudflare edges answer on this network, for every caller (see CfEdge).
         com.mlmvpn.scanner.data.CfEdge.init(this)

@@ -892,7 +892,7 @@ fun getHelpArticlesFa(): List<HelpArticle> {
 
                 هر وقت خواستید این روش را کنار بگذارید، یا گواهی جدید ساختید و می‌خواهید قبلی را پاک کنید، گواهی را حذف کنید. گواهی نصب‌شده تا خودتان پاکش نکنید باقی می‌ماند.
 
-                سریع‌ترین راه در همه‌ی گوشی‌ها: در جستجوی تنظیمات بنویسید `trusted credentials` یا `گواهی` و بعد سربرگ **«کاربر / User»** را انتخاب کنید. گواهی ما با نامی مثل **«MLM VPN Local CA …»** آنجاست؛ رویش بزنید و **حذف / Remove** را انتخاب کنید.
+                سریع‌ترین راه در همه‌ی گوشی‌ها: در جستجوی تنظیمات بنویسید `trusted credentials` یا `گواهی` و بعد سربرگ **«کاربر / User»** را انتخاب کنید. گواهی ما با نامی مثل **«Turbo VPN Local CA …»** آنجاست؛ رویش بزنید و **حذف / Remove** را انتخاب کنید.
 
                 • **سامسونگ (One UI):** تنظیمات ← بیومتریک و امنیت ← تنظیمات امنیتی دیگر ← **مشاهده گواهی‌های امنیتی (View security certificates)** ← سربرگ **User** ← گواهی را انتخاب و **Remove** بزنید
                 • **شیائومی / ردمی / پوکو:** تنظیمات ← رمزها و امنیت ← حریم خصوصی / امنیت سیستم ← رمزگذاری و اطلاعات ورود ← **اطلاعات ورود مورد اعتماد (Trusted credentials)** ← سربرگ **User** ← حذف
@@ -1453,7 +1453,7 @@ fun getHelpArticlesEn(): List<HelpArticle> {
 
                 Remove the certificate whenever you stop using this method, or after generating a new one so the old entry does not linger. An installed certificate stays until you remove it yourself.
 
-                Fastest route on any phone: search Settings for `trusted credentials`, then open the **User** tab. Our certificate is listed as **"MLM VPN Local CA …"** — tap it and choose **Remove**.
+                Fastest route on any phone: search Settings for `trusted credentials`, then open the **User** tab. Our certificate is listed as **"Turbo VPN Local CA …"** — tap it and choose **Remove**.
 
                 • **Samsung (One UI):** Settings → Biometrics and security → Other security settings → **View security certificates** → **User** tab → select it → **Remove**
                 • **Xiaomi / Redmi / Poco:** Settings → Passwords & security → Privacy / System security → Encryption & credentials → **Trusted credentials** → **User** tab → remove

@@ -88,7 +88,7 @@ internal class DhcpMessage : DataUnit {
 
         val readLength = buffer.position() - startDhcp
         if (readLength < minimumLength) {
-            // MLMVPN: skip only padding that is actually there.
+            // TurboVPN: skip only padding that is actually there.
             //
             // The original moved straight to `minimumLength` (the BOOTP minimum), assuming
             // every reply is zero-padded to it. VPN Gate's SecureNAT DHCP server answers with

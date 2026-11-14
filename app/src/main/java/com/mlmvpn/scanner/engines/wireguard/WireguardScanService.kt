@@ -98,7 +98,7 @@ class WireguardScanService : Service() {
     private fun acquireWakeLock() {
         try {
             val pm = getSystemService(Context.POWER_SERVICE) as PowerManager
-            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MLMVPN::WgScanWakeLock")
+            wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "TurboVPN::WgScanWakeLock")
             wakeLock?.acquire(2 * 60 * 60 * 1000L)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to acquire wake lock", e)

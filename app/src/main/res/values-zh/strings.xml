@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OilVPN</string>
+    <string name="app_name">TurboVPN</string>
     <string name="cloud_no_account_connected">未连接账户</string>
     <string name="cloud_press_add_button">点击“添加”按钮获取配置。</string>
     <string name="cloud_add_account">添加账户</string>
@@ -124,7 +124,7 @@
     <string name="scanner_copy_ips_button">复制 IP</string>
     <string name="scanner_vpn_active_warning">VPN 运行提醒</string>
     <string name="scanner_vpn_active_desc">检测到系统中有正在运行的 VPN。为了准确测试（Real Delay），流量必须绕过 VPN。\n请关闭当前 VPN 以继续测试。</string>
-    <string name="scanner_turn_off_vpn_and_scan">关闭 OilVPN 并扫描</string>
+    <string name="scanner_turn_off_vpn_and_scan">关闭 TurboVPN 并扫描</string>
     <string name="scanner_understood">知道了</string>
     <string name="scanner_cancel">取消</string>
     <string name="scanner_test_archive_ips_health">测试存档 IP 的健康状况</string>
@@ -259,7 +259,7 @@
     <string name="common_cancel">取消</string>
     <string name="common_close">关闭</string>
     <string name="about_title">关于我们</string>
-    <string name="about_desc">OilVPN 这个名字来自其先进的核心架构：Multi-Layer Multiplexer（多层多路复用器）。我们没有依赖单一连接，而是设计了一个超智能的多层平台，突破了传统网络的界限。通过同时调度多个强大的反审查引擎，本应用会动态地把您的流量引向最快、最安全的可用路径。我们的使命是提供高度稳定、超高速的网络，在多个层面打破网络限制，带来无与伦比、真正自由的上网体验。</string>
+    <string name="about_desc">TurboVPN 这个名字来自其先进的核心架构：Multi-Layer Multiplexer（多层多路复用器）。我们没有依赖单一连接，而是设计了一个超智能的多层平台，突破了传统网络的界限。通过同时调度多个强大的反审查引擎，本应用会动态地把您的流量引向最快、最安全的可用路径。我们的使命是提供高度稳定、超高速的网络，在多个层面打破网络限制，带来无与伦比、真正自由的上网体验。</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_github">GitHub</string>
     <string name="about_youtube">YouTube</string>
@@ -765,7 +765,7 @@
     <string name="vpn_disconnected">已断开</string>
     <string name="vpn_kill_switch">断网保护</string>
     <string name="vpn_reconnect">重新连接</string>
-    <string name="tile_label_vpn">OilVPN</string>
+    <string name="tile_label_vpn">TurboVPN</string>
     <string name="tile_label_tunnel">Mlm Tunnel</string>
     <string name="wg_data_check">验证数据确实在传输</string>
     <string name="wg_data_check_hint">在报告成功之前等待真实流量通过。有些运营商上 WireGuard 握手能完成，但之后会丢弃所有数据包，所以仅凭握手什么也证明不了。关闭此项连接更快，但“已连接”的含义会打折扣。</string>
@@ -1145,7 +1145,7 @@
     <string name="minutes_ago"> 分钟前</string>
     <string name="mlm_account_not_found">未找到 MLM 账户！</string>
     <string name="mlm_gateway">MLM Gateway</string>
-    <string name="mlmvpn_private_list">OilVPN 私有列表 · </string>
+    <string name="mlmvpn_private_list">TurboVPN 私有列表 · </string>
     <string name="months_ago"> 个月前</string>
     <string name="move_configs_to_the_connection_page">将 %1$s 个配置移到连接页面</string>
     <string name="my_list">我的列表</string>
@@ -1711,7 +1711,7 @@
     <string name="save_and_fetch">保存并获取</string>
     <string name="save_as_a_file">另存为文件</string>
     <string name="save_as_a_file_the_file_is">“另存为文件”——文件会被准确完整地写出。 </string>
-    <string name="saved_to_your_downloads_folder_mlmvpn_relay">已保存到“下载”文件夹：OilVPN_relay.gs</string>
+    <string name="saved_to_your_downloads_folder_mlmvpn_relay">已保存到“下载”文件夹：TurboVPN_relay.gs</string>
     <string name="scan_qr">扫描二维码</string>
     <string name="scan_the_config_s_qr_code">扫描配置的二维码</string>
     <string name="scanner">扫描器 · </string>
@@ -2457,7 +2457,7 @@
     <string name="manual_2">手动</string>
     <string name="means_throwing_away_the_very_thing_that">意味着丢掉恰恰能显示问题的东西。</string>
     <string name="medium_2">中等</string>
-    <string name="mlmvpn_private_list_2">OilVPN 私有列表</string>
+    <string name="mlmvpn_private_list_2">TurboVPN 私有列表</string>
     <string name="myself_you_can_leave_it_at_any">完成；你可以随时退出。</string>
     <string name="network_filtering_a_job_for_the_vpn">网络过滤（这是 VPN 的工作，不是本部分的）</string>
     <string name="no_bridge_straight_to_the_tor_network">无网桥，直接连接 Tor 网络。适用于没有封锁 Tor 的网络</string>
@@ -2618,7 +2618,7 @@
     <string name="wireguard_game_trial">WireGuard（游戏试用）</string>
     <string name="wireguard_is_active">WireGuard 已启用</string>
     <string name="wireguard_scan">WireGuard 扫描</string>
-    <string name="with_mlmvpn_stay_connected_always_whatever_the">有了 OilVPN，无论什么情况都能始终保持连接</string>
+    <string name="with_mlmvpn_stay_connected_always_whatever_the">有了 TurboVPN，无论什么情况都能始终保持连接</string>
     <string name="with_no_filter_every_server_in_this">不加筛选时，会显示该列表中的所有服务器。你可以选择多个国家 </string>
     <string name="word_processing">文字处理</string>
     <string name="working_ips_were_found_but_no_combination">找到了可用的 IP，但没有生成任何组合。为组合选择的分组 </string>
@@ -2738,7 +2738,7 @@
     <string name="in_quick_connect_i_get_no_responding">在快速连接中我收到“未找到有响应的服务器”。怎么办？</string>
     <string name="in_quick_connect_what_does_the_green">在快速连接中，服务器名称旁的绿色对勾是什么意思？</string>
     <string name="in_the_nhn_section_when_i_create">在 NHN 部分，我创建了带流量和时间限制的用户，为什么生成的配置不能用？</string>
-    <string name="in_your_phone_s_settings_search_type">在手机设置的搜索中输入“受信任的凭据”或“证书”，然后选择“用户”标签页。我们的证书在那里名为“MLM VPN Local CA …”；点击它并选择“移除”。Samsung、Xiaomi、Pixel、Huawei、Oppo/Realme 和 Vivo 的具体路径在第 17 篇教程中单独列出。如果你想一次清除所有已安装的证书，同一页面有“清除凭据”——但请注意，它会清除所有证书，而不只是我们的。移除后，域前置文件夹中第二步的对勾会自动取消。</string>
+    <string name="in_your_phone_s_settings_search_type">在手机设置的搜索中输入“受信任的凭据”或“证书”，然后选择“用户”标签页。我们的证书在那里名为“Turbo VPN Local CA …”；点击它并选择“移除”。Samsung、Xiaomi、Pixel、Huawei、Oppo/Realme 和 Vivo 的具体路径在第 17 篇教程中单独列出。如果你想一次清除所有已安装的证书，同一页面有“清除凭据”——但请注意，它会清除所有证书，而不只是我们的。移除后，域前置文件夹中第二步的对勾会自动取消。</string>
     <string name="iran_configs_1_to_8_no_server">• **伊朗配置（1 到 8）：**无需服务器，用于打开普通网站和应用。首先应尝试的选项。\n• **云面板（BPB / EDG / Nahan）：**你自己 Cloudflare 账户上的私人服务器；对所有应用最可靠的选项，但需要部署一次。\n• **域前置：**无需服务器、不花钱，但仅限浏览器，并且需要安装证书。\n• **游戏标签页：**用于降低游戏 ping，而不是打开网站。\n• **紧急：**当一切都被封锁、连配置都获取不到时使用。</string>
     <string name="is_installing_this_certificate_dangerous_for_my">安装这个证书对手机危险吗？可以安装朋友的证书吗？</string>
     <string name="is_there_a_per_app_setting_choosing">有没有“按应用设置”（选择哪些应用走 VPN）？</string>
@@ -5610,7 +5610,7 @@
     <string name="gereh_wipe_remove">完全移除 Gereh</string>
     <string name="gereh_wipe_clear_info">Gereh 中的所有消息、照片、视频和文件都会从本手机删除，包括你在 Gereh 中关注的 Telegram 频道的帖子。账号、联系人、群组和频道会保留（变为空），官方频道和群组保留其帖子。此操作无法撤销。</string>
     <string name="gereh_wipe_account_info">本手机会先退出你所有的群组和频道（成员会看到），然后删除 Gereh 在本手机上的一切：账号、联系人、消息和文件。Gereh 没有服务器，所以这就是你的全部账号；联系人会保留你的旧名片。再次打开 Gereh 会创建新账号。此操作无法撤销。</string>
-    <string name="gereh_wipe_remove_info">与删除账号相同，并且 Gereh 会从 OilVPN 中移除：没有图块、没有通知、没有后台运行，就像 OilVPN 从未有过它。Gereh 的程序文件（约 36 MB）属于已安装的应用，Android 不允许应用自行删除。可在 设置 › 恢复 Gereh 中恢复。</string>
+    <string name="gereh_wipe_remove_info">与删除账号相同，并且 Gereh 会从 TurboVPN 中移除：没有图块、没有通知、没有后台运行，就像 TurboVPN 从未有过它。Gereh 的程序文件（约 36 MB）属于已安装的应用，Android 不允许应用自行删除。可在 设置 › 恢复 Gereh 中恢复。</string>
     <string name="gereh_wipe_yes">删除</string>
     <string name="gereh_wipe_no">取消</string>
     <string name="gereh_wipe_clearing">正在清除 Gereh 数据…</string>

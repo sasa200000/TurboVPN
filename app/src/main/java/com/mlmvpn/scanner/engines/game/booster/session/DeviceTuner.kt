@@ -39,7 +39,7 @@ class DeviceTuner(context: Context) {
             if (wm != null) {
                 try {
                     @Suppress("DEPRECATION")
-                    highPerf = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, "MLMVPN:GameBoost").apply {
+                    highPerf = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_HIGH_PERF, "TurboVPN:GameBoost").apply {
                         setReferenceCounted(false)
                         acquire()
                     }
@@ -49,7 +49,7 @@ class DeviceTuner(context: Context) {
                 }
                 if (Build.VERSION.SDK_INT >= 29) {
                     try {
-                        lowLatency = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_LOW_LATENCY, "MLMVPN:GameBoostLL").apply {
+                        lowLatency = wm.createWifiLock(WifiManager.WIFI_MODE_FULL_LOW_LATENCY, "TurboVPN:GameBoostLL").apply {
                             setReferenceCounted(false)
                             acquire()
                         }
@@ -68,7 +68,7 @@ class DeviceTuner(context: Context) {
         try {
             val pm = app.getSystemService(Context.POWER_SERVICE) as PowerManager
             wake?.let { if (it.isHeld) it.release() }
-            wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MLMVPN:GameBoostProbe").apply {
+            wake = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "TurboVPN:GameBoostProbe").apply {
                 setReferenceCounted(false)
                 acquire(maxMs)
             }

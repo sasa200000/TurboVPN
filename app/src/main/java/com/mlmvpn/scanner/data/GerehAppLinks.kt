@@ -39,7 +39,7 @@ object GerehAppLinks {
     fun bind(context: Context) {
         val app = context.applicationContext
         GerehLinks.set(object : GerehLinks.Hook {
-            override fun appName() = "MLMVPN"
+            override fun appName() = "TurboVPN"
 
             override fun tiles(): List<GerehLinks.Item> =
                 tileApps().map { GerehLinks.Item(it.id, app.getString(it.labelRes), "", it.glyphRes ?: 0) }

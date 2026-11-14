@@ -263,8 +263,8 @@ internal fun NpvSourcesPage(
                 }
                 item(key = "files-foot") {
                     SettingsFooter(tr(
-                        "تلگرام خود فایل را فقط به کسی می‌دهد که وارد حساب تلگرامش شده باشد، برای همین دریافت خودکار فایل‌ها به ورود به تلگرام در همین برنامه نیاز دارد که هنوز آماده نیست. فعلاً لمس هر فایل پستش را در تلگرام باز می‌کند؛ فایل را آنجا بگیرید و «باز کردن با MLMVPN» را بزنید: فایل متنی خوانده می‌شود و کانفیگ‌هایش می‌آیند. فایل‌های npvt و npvs با کلید برنامهٔ NPV Tunnel رمز شده‌اند و فقط در همان برنامه اجرا می‌شوند.",
-                        "Telegram gives the file itself only to someone signed in to Telegram, so fetching files on their own needs a Telegram sign-in inside this app, which is not ready yet. For now a tap opens the post in Telegram; get the file there and use «Open with MLMVPN»: a text file is read and its configs come in. npvt and npvs files are encrypted with NPV Tunnel's key and run only in that app.",
+                        "تلگرام خود فایل را فقط به کسی می‌دهد که وارد حساب تلگرامش شده باشد، برای همین دریافت خودکار فایل‌ها به ورود به تلگرام در همین برنامه نیاز دارد که هنوز آماده نیست. فعلاً لمس هر فایل پستش را در تلگرام باز می‌کند؛ فایل را آنجا بگیرید و «باز کردن با TurboVPN» را بزنید: فایل متنی خوانده می‌شود و کانفیگ‌هایش می‌آیند. فایل‌های npvt و npvs با کلید برنامهٔ NPV Tunnel رمز شده‌اند و فقط در همان برنامه اجرا می‌شوند.",
+                        "Telegram gives the file itself only to someone signed in to Telegram, so fetching files on their own needs a Telegram sign-in inside this app, which is not ready yet. For now a tap opens the post in Telegram; get the file there and use «Open with TurboVPN»: a text file is read and its configs come in. npvt and npvs files are encrypted with NPV Tunnel's key and run only in that app.",
                     ))
                 }
             }

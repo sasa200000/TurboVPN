@@ -546,7 +546,7 @@ private fun Result(
                 SettingsActionRow(tr("اشتراک نتیجه", "Share the result"), Icons.Default.Share, onClick = {
                     // Names and scores only: no address, host or key ever leaves in a share.
                     val text = buildString {
-                        append(tr("میدان کانفیگ MLMVPN", "MLMVPN Config Arena")).append(" — ").append(timeOf(session.startedAt)).append('\n')
+                        append(tr("میدان کانفیگ TurboVPN", "TurboVPN Config Arena")).append(" — ").append(timeOf(session.startedAt)).append('\n')
                         board.standings.forEachIndexed { i, s -> append("${i + 1}. ${nameOf(s.panelId)} — ${s.total.toInt()}\n") }
                     }
                     context.startActivity(Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), null)

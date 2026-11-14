@@ -198,7 +198,7 @@ class WidgetConnectService : Service() {
         }
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("MLMVPN")
+            .setContentTitle("TurboVPN")
             .setContentText(text)
             .setOngoing(true)
             .setOnlyAlertOnce(true)

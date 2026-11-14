@@ -7,13 +7,13 @@ import java.util.TimeZone
 internal object BackupNames {
 
     /**
-     * `MLMVPN-backup-1405-07-26-1042.mlmbak`: the solar date for a Persian user, the Gregorian one
+     * `TurboVPN-backup-1405-07-26-1042.mlmbak`: the solar date for a Persian user, the Gregorian one
      * otherwise, and the time so two backups of one day do not ask to overwrite each other. Latin
      * digits, because a file name travels through apps that do not all handle Persian ones.
      */
     fun fileName(atMillis: Long, solar: Boolean, zone: TimeZone = TimeZone.getDefault()): String {
         val d = dateParts(atMillis, solar, zone)
-        return "MLMVPN-backup-%04d-%02d-%02d-%02d%02d.%s".format(
+        return "TurboVPN-backup-%04d-%02d-%02d-%02d%02d.%s".format(
             java.util.Locale.US, d[0], d[1], d[2], d[3], d[4], BackupFile.EXTENSION,
         )
     }

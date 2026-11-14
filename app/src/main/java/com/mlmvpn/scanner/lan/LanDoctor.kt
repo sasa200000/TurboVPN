@@ -213,7 +213,7 @@ object LanDoctor {
      * IP, the config, and the account are all absent -- this is meant to be pasted into a chat.
      */
     fun asText(rows: List<Row>, status: LanStatus): String = buildString {
-        appendLine("MLMVPN local network report")
+        appendLine("TurboVPN local network report")
         appendLine("engine=${status.engine} medium=${status.medium} port=${status.socksPort}")
         appendLine()
         rows.forEach { row ->

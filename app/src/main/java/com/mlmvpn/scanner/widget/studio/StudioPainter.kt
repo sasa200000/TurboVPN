@@ -491,7 +491,7 @@ object StudioPainter {
         val textX = xStart + iconSize + f.dp(8f)
         val dotRoom = if (statusDot) f.dp(14f) else 0f
         val textW = maxW - iconSize - f.dp(8f) - dotRoom
-        val title = WidgetArt.fit(if (brand) "MLMVPN" else methodName(app, t),
+        val title = WidgetArt.fit(if (brand) "TurboVPN" else methodName(app, t),
             WidgetArt.paint(ctx, f.sp(titleSp), ink.text, WidgetArt.Weight.BOLD), textW, f.rtl)
         val sub = if (brand && method && subtitle) WidgetArt.fit(methodName(app, t),
             WidgetArt.paint(ctx, f.sp(titleSp * 0.74f), ink.soft, WidgetArt.Weight.MEDIUM), textW, f.rtl) else null

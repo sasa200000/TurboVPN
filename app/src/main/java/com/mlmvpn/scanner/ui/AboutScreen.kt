@@ -157,7 +157,7 @@ fun AboutScreen(
                 )
             }
             Spacer(Modifier.height(16.dp))
-            Text("MLMVPN", color = Ios.Label, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+            Text("TurboVPN", color = Ios.Label, fontSize = 26.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(4.dp))
             // The version stays in Latin digits. It is an identifier people read back to us in a
             // bug report, not a measurement.

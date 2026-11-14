@@ -66,7 +66,7 @@ import com.mlmvpn.scanner.utils.S
 // =================================================================================================
 // Quick connect: one button that finds a working server and connects to it.
 //
-// Two lists feed it. The shared MLMVPN pool holds servers other people on the SAME operator have
+// Two lists feed it. The shared TurboVPN pool holds servers other people on the SAME operator have
 // proven within the hour -- see MlmPoolClient -- and the user's own saved list is the fallback for
 // when the pool cannot be reached. The button races whichever it gets and connects to the first
 // server that answers.
@@ -587,10 +587,16 @@ fun QuickConnectTab(onBack: () -> Unit = {}) {
  */
 @Composable
 private fun ConnectOrb(state: QuickState, onClick: () -> Unit) {
+    // TurboVPN: canary yellow before connecting; once connected the ring cycles
+    // through the user's neon preset, changing colour every second (Settings > Neon Light
+    // Effect; OFF falls back to the static colours).
     val ringColor = when (state) {
-        QuickState.CONNECTED -> Ios.Green
+        QuickState.CONNECTED -> {
+            val neon = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(LocalContext.current)
+            if (neon != androidx.compose.ui.graphics.Color.Unspecified) neon else Ios.Green
+        }
         QuickState.DISCONNECTING -> Ios.Destructive
-        QuickState.IDLE -> Ios.SecondaryLabel
+        QuickState.IDLE -> Color(0xFFFFD300) // canary yellow before connecting
         else -> Ios.Blue
     }
     val working = state == QuickState.SEARCHING || state == QuickState.CONNECTING
@@ -621,7 +627,7 @@ private fun ConnectOrb(state: QuickState, onClick: () -> Unit) {
     }
     val pressScale by animateFloatAsState(if (state == QuickState.IDLE) breathe else 1f, label = "scale")
 
-    // OilVPN: rain-of-light around the orb, colours cycling every second via the neon preset.
+    // TurboVPN: rain-of-light around the orb, colours cycling every second via the neon preset.
     val neonColors = com.mlmvpn.scanner.ui.gate.rememberNeonColors(LocalContext.current)
     Box(
         modifier = Modifier
@@ -793,7 +799,13 @@ private fun PoolRow(node: QuickNode, connected: Boolean) {
                     overflow = TextOverflow.Ellipsis,
                 )
             }
-            Text(node.protocol.uppercase(), color = Ios.SecondaryLabel, fontSize = 11.sp)
+            // TurboVPN: the protocol label cycles through the neon preset every second.
+            val protoNeon = com.mlmvpn.scanner.ui.gate.rememberSmoothNeonColor(LocalContext.current)
+            Text(
+                node.protocol.uppercase(),
+                color = if (protoNeon != androidx.compose.ui.graphics.Color.Unspecified) protoNeon else Ios.SecondaryLabel,
+                fontSize = 11.sp,
+            )
         }
         if (node.delay > 0) {
             Text(

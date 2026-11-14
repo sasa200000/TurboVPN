@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.MLMVPNScanner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.TurboVPNScanner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary = Google Blue -->
         <item name="colorPrimary">@color/gs_primary</item>
         <item name="colorPrimaryVariant">@color/gs_primary_dim</item>

@@ -768,5 +768,5 @@ private val RAW_SNI_CONFIGS = listOf(
     "vless://30980fc4-8789-42df-80d1-0c8e5cd26881@127.0.0.1:40443?encryption=none&security=tls&sni=cdn.veilvpn.fans&fp=chrome&type=httpupgrade&host=cdn.veilvpn.fans&path=%2Fvpnhu#hamvex%20snispf%C2%B3",
     "trojan://humanity@127.0.0.1:40443?security=tls&sni=www.calmlunch.com&type=ws&host=www.calmlunch.com&path=%2Fassignment#hamvex%20snispf%E2%81%B4",
     "trojan://rYuChHcwQZskq9E0zdoR@127.0.0.1:40443?security=tls&sni=vpn5.rnmcnm.com&type=ws&host=vpn5.rnmcnm.com&path=%2Fws-79dffb8106db#MLMMCISNI1",
-    "trojan://rYuChHcwQZskq9E0zdoR@127.0.0.1:40443?security=tls&sni=vpn5.rnmcnm.com&type=ws&host=vpn5.rnmcnm.com&path=%2Fws-79dffb8106db#MLMVPNMCISNI"
+    "trojan://rYuChHcwQZskq9E0zdoR@127.0.0.1:40443?security=tls&sni=vpn5.rnmcnm.com&type=ws&host=vpn5.rnmcnm.com&path=%2Fws-79dffb8106db#TurboVPNMCISNI"
 )

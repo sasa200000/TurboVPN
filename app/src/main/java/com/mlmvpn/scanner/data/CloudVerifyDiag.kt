@@ -74,7 +74,7 @@ data class CloudVerifyProbe(
      * messages are fixed strings from its own catalogue, not user data.
      */
     fun report(context: Context, note: String = ""): String = buildString {
-        appendLine("MLM VPN — Cloudflare verification diagnostic")
+        appendLine("Turbo VPN — Cloudflare verification diagnostic")
         appendLine("when       : ${java.util.Date()}")
         appendLine("app        : ${appVersion(context)}")
         appendLine("device     : ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL}, " +

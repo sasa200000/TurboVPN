@@ -144,7 +144,7 @@ class FluxSourceRepo(private val app: Context) {
         val c = (if (proxy != null) url.openConnection(proxy) else url.openConnection()) as HttpURLConnection
         c.connectTimeout = 10_000; c.readTimeout = 20_000
         c.instanceFollowRedirects = true
-        c.setRequestProperty("User-Agent", "MLMVPN-FLUX")
+        c.setRequestProperty("User-Agent", "TurboVPN-FLUX")
         if (cacheFile(src).exists()) {
             h.etag?.let { c.setRequestProperty("If-None-Match", it) }
             h.lastModified?.let { c.setRequestProperty("If-Modified-Since", it) }

@@ -157,8 +157,8 @@ fun ColumnScope.UrnetworkOnboarding(onCreated: () -> Unit) {
                 "A free account has a daily data allowance, granted again every day at 00:00 UTC; the usage, what is left and the time of the next grant are on the connect screen."),
             tr("حساب بی‌ایمیل و بی‌گذرواژه ساخته می‌شود و یک «عبارت بازیابی» دارد که تنها راه برگرداندن آن است.",
                 "The account is made with no email or password, and comes with a «recovery phrase», the only way back to it."),
-            tr("MLMVPN نمایندهٔ رسمی URnetwork نیست؛ از SDK متن‌باز و رسمی خود URnetwork استفاده می‌کند.",
-                "MLMVPN is not affiliated with URnetwork; it uses URnetwork's own official open-source SDK."),
+            tr("TurboVPN نمایندهٔ رسمی URnetwork نیست؛ از SDK متن‌باز و رسمی خود URnetwork استفاده می‌کند.",
+                "TurboVPN is not affiliated with URnetwork; it uses URnetwork's own official open-source SDK."),
         )
         points.forEach { p ->
             Row(verticalAlignment = Alignment.Top) {

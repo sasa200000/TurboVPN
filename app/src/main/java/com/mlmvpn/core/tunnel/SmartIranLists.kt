@@ -88,7 +88,7 @@ object SmartIranLists {
         val c = (if (proxy != null) URL(url).openConnection(proxy) else URL(url).openConnection()) as HttpURLConnection
         c.connectTimeout = 10_000; c.readTimeout = 30_000
         c.instanceFollowRedirects = true
-        c.setRequestProperty("User-Agent", "MLMVPN-SmartIran")
+        c.setRequestProperty("User-Agent", "TurboVPN-SmartIran")
         try {
             if (c.responseCode != 200) return@runCatching false
             c.inputStream.use { input -> to.outputStream().use { input.copyTo(it) } }

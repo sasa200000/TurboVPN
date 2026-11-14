@@ -960,7 +960,7 @@ private fun sourceLabel(item: StoreItem, row: StoreRow): String = when (val s = 
     is StoreSource.GithubFile -> "${s.repo} · ${s.path}"
     is StoreSource.GithubFiles -> "${s.repo} · " + s.paths.joinToString(" + ")
     is StoreSource.SignedManifest -> tr("فهرست نسخه‌های امضاشدهٔ سازنده", "The developer's signed release list")
-    is StoreSource.Channel -> tr("کانال امضاشدهٔ MLM VPN", "MLM VPN signed channel")
+    is StoreSource.Channel -> tr("کانال امضاشدهٔ Turbo VPN", "Turbo VPN signed channel")
     is StoreSource.WithApp -> tr("همراه برنامه", "With the app")
     is StoreSource.App -> item.repo ?: ""
 }

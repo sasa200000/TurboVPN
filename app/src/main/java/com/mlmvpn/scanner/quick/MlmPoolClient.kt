@@ -17,7 +17,7 @@ import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * The MLMVPN shared pool, from the client side.
+ * The TurboVPN shared pool, from the client side.
  *
  * Every install that runs a sweep learns something the next one would otherwise have to rediscover:
  * that a given config answered, on a given network, a minute ago. This sends those answers to the

@@ -149,7 +149,7 @@ android.applicationVariants.all { variant ->
         if (offset != null) {
             output.versionCodeOverride = base + offset
         }
-        output.outputFileName = "mlmvpn-${variant.versionName}-${abi ?: 'universal'}-${variant.buildType.name}.apk"
+        output.outputFileName = "turbovpn-${variant.versionName}-${abi ?: 'universal'}-${variant.buildType.name}.apk"
     }
 }
 

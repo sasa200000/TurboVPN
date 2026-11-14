@@ -38,7 +38,7 @@ object CfDoctorReport {
             if(raw.toByteArray().size>125000) { raw=compact(false); dictionary+=" metrics_omitted=size_budget" }
         }
         return SecretRedactor.redact(buildString {
-            appendLine("HEADER MLMVPN DOCTOR v3 plan=${token(plan)} complete=$complete")
+            appendLine("HEADER TurboVPN DOCTOR v3 plan=${token(plan)} complete=$complete")
             stages.forEachIndexed { i,s -> appendLine("ST${i+1} ${s.verdict} ${token(s.layer)}") }
             appendLine("ENV")
             environment.filterKeys { it in setOf("app","android","model","net","op","v6","vpn","validated","captive","private_dns","timezone","time","network_label",

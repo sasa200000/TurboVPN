@@ -1,8 +1,8 @@
-# MLM VPN — Android
+# TurboVPN — Android
 
 <p align="center">
   <b>A multi-engine VPN, network scanner and serverless messenger for Android.</b><br/>
-  Developed and maintained by <a href="https://github.com/mlmvpn">mlmvpn</a>.
+  Developed and maintained by <a href="https://github.com/mohmdnini26/TurboVPN">mlmvpn</a>.
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ Before publishing, the addresses and keys of our own servers and relays were rep
 
 ### Overview
 
-MLM VPN brings many independent connection engines together behind one
+Turbo VPN brings many independent connection engines together behind one
 iPhone-style home screen: a V2Ray/Xray client and clean-IP scanner, adaptive
 engines that find a working route by themselves, more than twenty connection
 methods for restrictive networks, a full Cloudflare control panel, and
@@ -85,7 +85,7 @@ is still in English). Choose one in Settings › App Language; Gereh follows it.
   equal parts so they get through any route, including the relay.
 - **Groups and channels** with an owner and admins, settings and member
   rights, invite links (with or without approval), and the official channel and
-  group «MLMVPN Official» with a member count estimated phone to phone.
+  group «TurboVPN Official» with a member count estimated phone to phone.
 - Add contacts by QR or card link, or «add nearby» with a 4-symbol check.
   Notifications, chat folders and a home-screen widget; Gereh runs in its own
   process so its errors never touch the VPN.
@@ -94,7 +94,7 @@ is still in English). Choose one in Settings › App Language; Gereh follows it.
 
 - **FLUX** — an adaptive engine of its own: races many routes, lets you choose
   the country and IP version, and proves the real exit after connecting.
-- **MAE (MLM Adaptive Engine)** — you pick your apps and sites; it learns, per
+- **MAE (Turbo Adaptive Engine)** — you pick your apps and sites; it learns, per
   network, which route each one needs and builds foreign exits (a US exit for
   Gemini and Google Flow) on your own Cloudflare account.
 - **V2Ray / Xray client** — VLESS, VMess, Trojan, Shadowsocks with REALITY, TLS,
@@ -123,7 +123,7 @@ is still in English). Choose one in Settings › App Language; Gereh follows it.
   trying dozens of ways on your own line, and remembers what works per network.
 - **Config Studio** — a panel for users, volume, time and device limits on your
   own Worker, with multi-location exits, plans, templates and endpoints.
-- **MLM Scout** — tests every method on your line for real and ranks them.
+- **Turbo Scout** — tests every method on your line for real and ranks them.
 - **Game Booster** — measures the route to the game's region and picks the
   best of your own line, WARP, Amnezia, WireGuard and FENIX; anti-sanction DNS
   for sign-in and a floating ping over the game.
@@ -154,7 +154,7 @@ Requirements: Android Studio (recent), a JDK matching the Android Gradle
 Plugin in `build.gradle`, and the Android SDK with `compileSdk 36`.
 
 ```bash
-git clone https://github.com/mlmvpn/mlmvpn_android.git
+git clone https://github.com/mohmdnini26/TurboVPN/mlmvpn_android.git
 cd mlmvpn_android
 ./gradlew assembleDebug
 ```
@@ -186,7 +186,7 @@ In short:
 
 > Any use, fork, or derivative of this project — source or compiled — must
 > clearly credit the original developer, **mlmvpn**
-> (https://github.com/mlmvpn), wherever the software is presented to end
+> (https://github.com/mohmdnini26/TurboVPN), wherever the software is presented to end
 > users (About screen, README, store listing, etc.), in addition to the
 > standard GPLv3 obligations (source availability, same license on
 > derivatives, etc.).
@@ -197,7 +197,7 @@ In short:
 
 ### معرفی
 
-**MLM VPN** چندین موتور اتصال مستقل را زیر یک صفحهٔ اصلی به سبک آیفون گرد
+**Turbo VPN** چندین موتور اتصال مستقل را زیر یک صفحهٔ اصلی به سبک آیفون گرد
 هم می‌آورد: کلاینت V2Ray/Xray و اسکنر آی‌پی تمیز، موتورهای هوشمندی که خودشان
 راه کارا را پیدا می‌کنند، بیش از بیست روش اتصال برای شبکه‌های محدود، یک پنل
 کامل کلادفلر، و **گره**، پیام‌رسانی که هیچ سروری ندارد. با Kotlin و Jetpack
@@ -228,7 +228,7 @@ English، فارسی، **Русский** و **中文** (روسی و چینی د
 - **تکه‌تکه کردن فایل‌ها:** عکس، ویدیو، فایل و پیام صوتی در تکه‌های هم‌اندازه
   فرستاده می‌شوند تا از هر راهی، از جمله رله، رد شوند.
 - **گروه و کانال** با صاحب و مدیران، تنظیمات و اختیارات اعضا، لینک دعوت (با
-  تأیید مدیر یا بی آن)، و کانال و گروه رسمی «MLMVPN رسمی» با شمار اعضایی که
+  تأیید مدیر یا بی آن)، و کانال و گروه رسمی «TurboVPN رسمی» با شمار اعضایی که
   گوشی‌به‌گوشی تخمین زده می‌شود.
 - افزودن مخاطب با QR یا لینک کارت، یا «افزودن از نزدیک» با کد تأیید ۴ نمادی.
   اعلان، پوشه‌های گفت‌وگو و ویجت صفحهٔ اصلی؛ گره در پروسهٔ جدای خودش اجرا
@@ -238,7 +238,7 @@ English، فارسی، **Русский** و **中文** (روسی و چینی د
 
 - **FLUX** — موتور هوشمند مستقل: راه‌های زیادی را هم‌زمان می‌آزماید، کشور و
   نسخهٔ IP را به انتخاب شما می‌گذارد و پس از اتصال، خروجی واقعی را ثابت می‌کند.
-- **MAE (موتور تطبیقی MLM)** — برنامه‌ها و سایت‌هایتان را انتخاب می‌کنید؛ برای
+- **MAE (موتور تطبیقی توربو)** — برنامه‌ها و سایت‌هایتان را انتخاب می‌کنید؛ برای
   هر کدام روی هر شبکه یاد می‌گیرد کدام راه لازم است و خروجی خارجی (از جمله
   خروجی آمریکا برای جمینای و گوگل فلو) را روی حساب کلادفلر خودتان می‌سازد.
 - **کلاینت V2Ray / Xray** — VLESS، VMess، Trojan و Shadowsocks با REALITY،
@@ -266,7 +266,7 @@ English، فارسی، **Русский** و **中文** (روسی و چینی د
   روش روی خط خودتان، و آنچه کار می‌کند را برای هر شبکه به خاطر می‌سپارد.
 - **کانفیگ استدیو** — پنل کاربر، حجم، زمان و سقف دستگاه روی ورکر خودتان، با
   خروجی چندکشوری، بسته‌ها، قالب‌ها و نقطه‌های اتصال.
-- **MLM Scout** — همهٔ روش‌ها را واقعاً روی خط شما می‌آزماید و رتبه‌بندی می‌کند.
+- **Turbo Scout** — همهٔ روش‌ها را واقعاً روی خط شما می‌آزماید و رتبه‌بندی می‌کند.
 - **گیم بوستر** — مسیر تا منطقهٔ بازی را اندازه می‌گیرد و بهترین را از میان
   خط خودتان، وارپ، آمنزیا، وایرگارد و فنیکس برمی‌گزیند؛ DNS ضدتحریم برای ورود
   و پینگ شناور روی بازی.
@@ -297,7 +297,7 @@ app/src/main/jniLibs/      # کتابخانه‌های native از پیش ساخ
 در `build.gradle`، و Android SDK با `compileSdk 36`.
 
 ```bash
-git clone https://github.com/mlmvpn/mlmvpn_android.git
+git clone https://github.com/mohmdnini26/TurboVPN/mlmvpn_android.git
 cd mlmvpn_android
 ./gradlew assembleDebug
 ```
@@ -328,7 +328,7 @@ GPLv3) که ذکر منبع را الزامی می‌کند منتشر شده ا
 > هرگونه استفاده، فورک یا اثر مشتق‌شده از این پروژه — چه سورس و چه
 > کامپایل‌شده — باید هرجا که نرم‌افزار به کاربر نهایی نمایش داده می‌شود (صفحهٔ
 > درباره، README، صفحهٔ فروشگاه و غیره) به‌طور واضح توسعه‌دهندهٔ اصلی،
-> **mlmvpn** (https://github.com/mlmvpn)، را ذکر کند؛ افزون بر الزام‌های
+> **mlmvpn** (https://github.com/mohmdnini26/TurboVPN)، را ذکر کند؛ افزون بر الزام‌های
 > معمول GPLv3 (در دسترس بودن سورس، همان مجوز برای آثار مشتق و غیره).
 
 ---
@@ -337,7 +337,7 @@ GPLv3) که ذکر منبع را الزامی می‌کند منتشر شده ا
 
 ### Обзор
 
-MLM VPN объединяет множество независимых движков подключения на одном главном
+Turbo VPN объединяет множество независимых движков подключения на одном главном
 экране в стиле iPhone: клиент V2Ray/Xray и сканер чистых IP, адаптивные движки,
 которые сами находят рабочий маршрут, более двадцати способов подключения для
 сетей с ограничениями, полноценную панель Cloudflare и **Gereh** — мессенджер,
@@ -371,7 +371,7 @@ English, فارسی, **Русский** и **中文** (русский и кит�
   равные части, чтобы пройти любым путём, включая ретранслятор.
 - **Группы и каналы** с владельцем и администраторами, настройками и правами
   участников, ссылки-приглашения (с одобрением или без), официальный канал и
-  группа «MLMVPN Official» с числом участников, оцениваемым от телефона к телефону.
+  группа «TurboVPN Official» с числом участников, оцениваемым от телефона к телефону.
 - Контакты добавляются по QR-коду или ссылке на карточку либо «рядом» с
   проверкой по 4 символам. Уведомления, папки чатов и виджет главного экрана;
   Gereh работает в отдельном процессе, поэтому его ошибки не затрагивают VPN.
@@ -380,7 +380,7 @@ English, فارسی, **Русский** и **中文** (русский и кит�
 
 - **FLUX** — собственный адаптивный движок: перебирает множество маршрутов,
   позволяет выбрать страну и версию IP и проверяет реальный выход после подключения.
-- **MAE (MLM Adaptive Engine)** — вы выбираете свои приложения и сайты; он
+- **MAE (Turbo Adaptive Engine)** — вы выбираете свои приложения и сайты; он
   узнаёт для каждой сети, какой маршрут нужен каждому, и создаёт зарубежные
   выходы (в том числе выход в США для Gemini и Google Flow) в вашем аккаунте Cloudflare.
 - **Клиент V2Ray / Xray** — VLESS, VMess, Trojan, Shadowsocks с REALITY, TLS,
@@ -409,7 +409,7 @@ English, فارسی, **Русский** и **中文** (русский и кит�
   пробуя десятки способов на вашей линии, и запоминает рабочий для каждой сети.
 - **Config Studio** — панель пользователей, трафика, сроков и лимитов устройств
   на вашем Worker, с многолокационными выходами, тарифами, шаблонами и точками подключения.
-- **MLM Scout** — реально проверяет каждый способ на вашей линии и ранжирует их.
+- **Turbo Scout** — реально проверяет каждый способ на вашей линии и ранжирует их.
 - **Game Booster** — измеряет маршрут до региона игры и выбирает лучший из
   вашей линии, WARP, Amnezia, WireGuard и FENIX; DNS против санкций для входа и
   плавающий пинг поверх игры.
@@ -441,7 +441,7 @@ app/src/main/jniLibs/      # Готовые нативные библиотек�
 `build.gradle` и Android SDK с `compileSdk 36`.
 
 ```bash
-git clone https://github.com/mlmvpn/mlmvpn_android.git
+git clone https://github.com/mohmdnini26/TurboVPN/mlmvpn_android.git
 cd mlmvpn_android
 ./gradlew assembleDebug
 ```
@@ -472,7 +472,7 @@ Telegram for Android для интерфейса Gereh), поэтому всё �
 
 > Любое использование, форк или производная работа — в исходном или
 > скомпилированном виде — должны явно указывать первоначального разработчика,
-> **mlmvpn** (https://github.com/mlmvpn), везде, где программа показывается
+> **mlmvpn** (https://github.com/mohmdnini26/TurboVPN), везде, где программа показывается
 > конечным пользователям (экран «О программе», README, страница в магазине и
 > т. д.), в дополнение к обычным обязательствам GPLv3 (доступность исходного
 > кода, та же лицензия для производных работ и т. д.).
@@ -483,7 +483,7 @@ Telegram for Android для интерфейса Gereh), поэтому всё �
 
 ### 概述
 
-MLM VPN 在一个 iPhone 风格的主屏幕上集合了多个独立的连接引擎：V2Ray/Xray
+Turbo VPN 在一个 iPhone 风格的主屏幕上集合了多个独立的连接引擎：V2Ray/Xray
 客户端和干净 IP 扫描器、能自己找到可用路由的自适应引擎、二十多种面向受限网络
 的连接方式、完整的 Cloudflare 控制面板，以及完全不需要服务器的通讯工具
 **Gereh**。使用 Kotlin 和 Jetpack Compose 编写（`minSdk 24`、`targetSdk 34`、
@@ -511,7 +511,7 @@ English、فارسی、**Русский** 和 **中文**（俄语和中文是 1.
 - **文件分块传输：** 照片、视频、文件和语音消息被切成等大的块，可以通过任何
   路径传递，包括中继。
 - **群组和频道**，有所有者和管理员、设置和成员权限、邀请链接（可选审批），
-  以及官方频道和群组「MLMVPN Official」，成员数在手机之间估算。
+  以及官方频道和群组「TurboVPN Official」，成员数在手机之间估算。
 - 通过二维码或名片链接添加联系人，或用「添加附近的人」并核对 4 个符号。
   支持通知、聊天文件夹和主屏幕小部件；Gereh 在独立进程中运行，其错误不会影响 VPN。
 
@@ -519,7 +519,7 @@ English、فارسی、**Русский** 和 **中文**（俄语和中文是 1.
 
 - **FLUX**——独立的自适应引擎：同时竞速多条路由，可选择国家和 IP 版本，连接后
   验证真实出口。
-- **MAE（MLM Adaptive Engine）**——你选择常用的应用和网站；它针对每个网络学习
+- **MAE（Turbo Adaptive Engine）**——你选择常用的应用和网站；它针对每个网络学习
   每个应用需要哪条路由，并在你自己的 Cloudflare 账户上建立境外出口（包括供
   Gemini 和 Google Flow 使用的美国出口）。
 - **V2Ray / Xray 客户端**——VLESS、VMess、Trojan、Shadowsocks，支持 REALITY、
@@ -547,7 +547,7 @@ English、فارسی、**Русский** 和 **中文**（俄语和中文是 1.
   的连接在哪里中断，并为每个网络记住可用的方式。
 - **Config Studio**——在你自己的 Worker 上管理用户、流量、时间和设备限制的面板，
   支持多位置出口、套餐、模板和端点。
-- **MLM Scout**——在你的线路上真实测试每一种方式并排名。
+- **Turbo Scout**——在你的线路上真实测试每一种方式并排名。
 - **Game Booster（游戏加速器）**——测量到游戏区域的路由，从你自己的线路、WARP、
   Amnezia、WireGuard 和 FENIX 中选出最佳；提供用于登录的反制裁 DNS 和游戏上方
   的悬浮 ping。
@@ -577,7 +577,7 @@ app/src/main/jniLibs/      # 预编译的原生库
 JDK，以及安装了 `compileSdk 36` 的 Android SDK。
 
 ```bash
-git clone https://github.com/mlmvpn/mlmvpn_android.git
+git clone https://github.com/mohmdnini26/TurboVPN/mlmvpn_android.git
 cd mlmvpn_android
 ./gradlew assembleDebug
 ```
@@ -606,5 +606,5 @@ cd mlmvpn_android
 
 > 对本项目的任何使用、分叉或衍生作品——无论是源代码还是编译后的形式——都必须
 > 在向最终用户展示软件的任何地方（关于页面、README、商店页面等）明确注明原始
-> 开发者 **mlmvpn**（https://github.com/mlmvpn），同时遵守 GPLv3 的标准义务
+> 开发者 **mlmvpn**（https://github.com/mohmdnini26/TurboVPN），同时遵守 GPLv3 的标准义务
 > （提供源代码、衍生作品使用相同许可等）。

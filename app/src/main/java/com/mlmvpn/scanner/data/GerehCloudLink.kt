@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
  * cloud section: the chat asks through [org.mlmvpn.chat.bridge.GerehCloud], which this fills in the
  * chat's own `:chat` process. How the relay's Worker is put up (the Durable Object, its migration,
  * the workers.dev address) is the bridge's, the same in every app that carries Gereh (both teams,
- * issue 7, 28 Oct 2026); this gives only what is MLMVPN's: the accounts, the road to Cloudflare's
+ * issue 7, 28 Oct 2026); this gives only what is TurboVPN's: the accounts, the road to Cloudflare's
  * API, and a Worker name that says nothing. None of the app's start-up runs in `:chat`, so the
  * little the Cloudflare calls need of it (the language, the edges, the API route) is bound at the
  * first request.

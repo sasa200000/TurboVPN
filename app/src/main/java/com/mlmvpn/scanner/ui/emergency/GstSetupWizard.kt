@@ -643,7 +643,7 @@ fun cleanAppsScript(rawIn: String, authKey: String): String {
 fun saveScriptToDownloads(context: android.content.Context, code: String): Boolean {
     return try {
         val bytes = code.toByteArray(Charsets.UTF_8)
-        val name = "MLMVPN_relay.gs"
+        val name = "TurboVPN_relay.gs"
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
             val resolver = context.contentResolver
             val values = android.content.ContentValues().apply {

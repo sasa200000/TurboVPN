@@ -115,7 +115,7 @@ data class CloudAccount(
     var relayStatus: String = "idle",
 
     /**
-     * The MLMVPN shared-pool worker.
+     * The TurboVPN shared-pool worker.
      *
      * Deployed once, on one account, and shared by every install -- unlike the panels, which are
      * per-user. See assets/mlmvpn_pool_worker.js.

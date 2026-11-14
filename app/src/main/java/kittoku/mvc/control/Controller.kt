@@ -190,7 +190,7 @@ internal class Controller(private val bridge: SharedBridge) {
             launchJobTelemetry()
 
             logWriter?.report("VPN connection has been established")
-            // MLMVPN: the one point where the tunnel is known to be carrying traffic.
+            // TurboVPN: the one point where the tunnel is known to be carrying traffic.
             kittoku.mvc.service.SoftEtherVpnService.isConnected = true
 
 

@@ -30,7 +30,7 @@ internal class OutgoingManager(internal val bridge: SharedBridge) {
     private var jobMain: Job? = null
     private var jobRetrieve: Job? = null
 
-    // MLMVPN: a bounded buffer pool instead of a rendezvous hand-off.
+    // TurboVPN: a bounded buffer pool instead of a rendezvous hand-off.
     //
     // The original used Channel(0) with two alternating ByteBuffers, so the reader could never
     // run ahead of the sender. jobMain's batching loop (`tryReceive` until the frame is full)

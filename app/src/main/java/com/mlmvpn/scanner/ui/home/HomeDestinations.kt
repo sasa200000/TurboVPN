@@ -186,7 +186,7 @@ object HomeDestinations {
         // «Proton VPN»: the user's own Proton account's free WireGuard servers -- signed in on
         // Proton's own page inside the app, connected through the Amnezia engine.
         HomeApp("proton",            R.string.proton_title,       Icons.Default.VpnKey,        Purple, imageRes = R.drawable.ic_app_proton),
-        // OilVPN: the Windscribe engine is a stub (its SDK is not in the public source), so its tile is hidden.
+        // TurboVPN: the Windscribe engine is a stub (its SDK is not in the public source), so its tile is hidden.
         // HomeApp("windscribe",        R.string.windscribe_title,   Icons.Default.VpnKey,        Blue, imageRes = R.drawable.ic_app_windscribe),
         // «Outline»: Outline VPN keys -- free public Shadowsocks servers and the user's own
         // ss:// / ssconf:// keys -- tested on this line, fastest first, connected in one tap.

@@ -49,7 +49,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "گره: کاشی‌ها و تنظیمات برنامه در گفت‌وگو",
-                            "از منوی پیوست («MLMVPN» و «تنظیمات») یک کاشی یا یک گزینهٔ تنظیمات برنامه را بفرستید؛ در گفت‌وگو کارتی شیک با دکمهٔ «باز کردن در MLMVPN» می‌آید و گیرنده با یک زدن همان بخش برنامه را باز می‌کند. کارت روی خود هر گوشی کشیده می‌شود، پس هیچ دانلودی نمی‌خواهد، حتی وقتی هدایت شود.",
+                            "از منوی پیوست («TurboVPN» و «تنظیمات») یک کاشی یا یک گزینهٔ تنظیمات برنامه را بفرستید؛ در گفت‌وگو کارتی شیک با دکمهٔ «باز کردن در TurboVPN» می‌آید و گیرنده با یک زدن همان بخش برنامه را باز می‌کند. کارت روی خود هر گوشی کشیده می‌شود، پس هیچ دانلودی نمی‌خواهد، حتی وقتی هدایت شود.",
                             Icons.Default.Apps
                         ),
                         ChangelogItem(
@@ -119,7 +119,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "گره: کانال و گروه رسمی مشترک با دکتر نت",
-                            "کاربران MLMVPN و دکتر نت حالا یک کانال و یک گروه رسمی دارند، و هر برنامه آن را با نام خودش نشان می‌دهد.",
+                            "کاربران TurboVPN و دکتر نت حالا یک کانال و یک گروه رسمی دارند، و هر برنامه آن را با نام خودش نشان می‌دهد.",
                             Icons.Default.Groups
                         ),
                         ChangelogItem(
@@ -314,7 +314,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                     listOf(
                         ChangelogItem(
                             "گره، پیام‌رسان گوشی‌به‌گوشی (کاشی تازهٔ «گره»)",
-                            "پیام‌رسانی با ظاهر و امکانات تلگرام که هیچ سروری ندارد: پیام مستقیم از گوشی شما به گوشی مخاطب می‌رود و همه‌چیز سرتاسری رمز می‌شود. بی شمارهٔ تلفن و ایمیل: هویت شما کلیدی است که روی خود گوشی ساخته می‌شود، با نامی مثل «ehsan·4821». افزودن مخاطب با QR یا لینک کارت، یا «افزودن از نزدیک» با بلوتوث یا وای‌فای و کد تأیید ۴ ایموجی. پیام روی یک وای‌فای مشترک حتی بی اینترنت، با بلوتوث وقتی کنار هم هستید، و روی اینترنت از راه گوشی‌ها و رایانه‌های داوطلب خود کاربران می‌رسد. گفت‌وگوی تکی، گروه با صاحب و مدیران، کانال (فقط مدیران می‌نویسند)، عکس، ویدیو، فایل و پیام صوتی، عکس پروفایل و عکس گروه و کانال، و پوشه‌های گفت‌وگو. اعلان پیام وقتی برنامه بسته است، و زبان همان زبان MLMVPN با فارسی کامل. گره در پروسهٔ جدای خودش اجرا می‌شود تا خطایش به VPN آسیب نزند.",
+                            "پیام‌رسانی با ظاهر و امکانات تلگرام که هیچ سروری ندارد: پیام مستقیم از گوشی شما به گوشی مخاطب می‌رود و همه‌چیز سرتاسری رمز می‌شود. بی شمارهٔ تلفن و ایمیل: هویت شما کلیدی است که روی خود گوشی ساخته می‌شود، با نامی مثل «ehsan·4821». افزودن مخاطب با QR یا لینک کارت، یا «افزودن از نزدیک» با بلوتوث یا وای‌فای و کد تأیید ۴ ایموجی. پیام روی یک وای‌فای مشترک حتی بی اینترنت، با بلوتوث وقتی کنار هم هستید، و روی اینترنت از راه گوشی‌ها و رایانه‌های داوطلب خود کاربران می‌رسد. گفت‌وگوی تکی، گروه با صاحب و مدیران، کانال (فقط مدیران می‌نویسند)، عکس، ویدیو، فایل و پیام صوتی، عکس پروفایل و عکس گروه و کانال، و پوشه‌های گفت‌وگو. اعلان پیام وقتی برنامه بسته است، و زبان همان زبان TurboVPN با فارسی کامل. گره در پروسهٔ جدای خودش اجرا می‌شود تا خطایش به VPN آسیب نزند.",
                             Icons.Default.Chat
                         ),
                         ChangelogItem(
@@ -324,7 +324,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "گره: لینک دعوت و کانال و گروه رسمی",
-                            "گروه و کانال حالا لینک دعوت دارند («mlmchat://g/…»)، با تأیید مدیر یا بی آن؛ زدن روی لینک در هر گفت‌وگو صفحهٔ پیوستن را باز می‌کند. هر کاربر گره از اولین اجرا عضو کانال و گروه «MLMVPN رسمی» است (در کانال فقط مدیران پست می‌گذارند و در گروه همه می‌نویسند)؛ پست‌ها از گوشی به گوشی می‌رسند. این دو را نمی‌شود ترک یا حذف کرد؛ می‌شود بی‌صدا یا بایگانی‌شان کرد.",
+                            "گروه و کانال حالا لینک دعوت دارند («mlmchat://g/…»)، با تأیید مدیر یا بی آن؛ زدن روی لینک در هر گفت‌وگو صفحهٔ پیوستن را باز می‌کند. هر کاربر گره از اولین اجرا عضو کانال و گروه «TurboVPN رسمی» است (در کانال فقط مدیران پست می‌گذارند و در گروه همه می‌نویسند)؛ پست‌ها از گوشی به گوشی می‌رسند. این دو را نمی‌شود ترک یا حذف کرد؛ می‌شود بی‌صدا یا بایگانی‌شان کرد.",
                             Icons.Default.Forum
                         ),
                         ChangelogItem(
@@ -354,7 +354,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "زبان روسی و چینی (Русский، 简体中文)",
-                            "دو زبان تازه برای کل برنامه و گره، از تنظیمات › زبان اپلیکیشن؛ گره با «همان زبان MLMVPN» دنبالش می‌کند یا زبان خودش را می‌گیرد. در این نسخه منوها، دکمه‌ها و پیام‌ها ترجمه شده‌اند (حدود ۵۶۰۰ متن برنامه و همهٔ متن‌های خود گره)؛ بخشی از متن‌های داخل بعضی صفحه‌ها و صفحه‌های اصلی تلگرام در گره هنوز انگلیسی‌اند و در نسخه‌های بعد می‌آیند.",
+                            "دو زبان تازه برای کل برنامه و گره، از تنظیمات › زبان اپلیکیشن؛ گره با «همان زبان TurboVPN» دنبالش می‌کند یا زبان خودش را می‌گیرد. در این نسخه منوها، دکمه‌ها و پیام‌ها ترجمه شده‌اند (حدود ۵۶۰۰ متن برنامه و همهٔ متن‌های خود گره)؛ بخشی از متن‌های داخل بعضی صفحه‌ها و صفحه‌های اصلی تلگرام در گره هنوز انگلیسی‌اند و در نسخه‌های بعد می‌آیند.",
                             Icons.Default.Language
                         ),
                         ChangelogItem(
@@ -419,7 +419,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "ویجت برای هر روش اتصال",
-                            "هر کاشی اتصال برنامه (وایرگارد، ماسک، وارپ، سایفون، تور، گف، لنترن، FLUX، FENIX، آمنزیا، اوتلاین، OpenVPN، V2Ray و بقیه) حالا یک ویجت هم‌شکل خودش برای صفحهٔ اصلی گوشی دارد: با یک لمس همان روش وصل یا قطع می‌شود و چراغش می‌گوید وصل است یا در حال اتصال. اگر روشی پیش از اتصال کاری لازم داشته باشد (حساب، فهرست سرور)، لمس، صفحهٔ همان روش را باز می‌کند. از «ویجت استدیو»، یا با نگه داشتن جای خالی صفحهٔ اصلی گوشی › ویجت‌ها › MLMVPN اضافه می‌شود.",
+                            "هر کاشی اتصال برنامه (وایرگارد، ماسک، وارپ، سایفون، تور، گف، لنترن، FLUX، FENIX، آمنزیا، اوتلاین، OpenVPN، V2Ray و بقیه) حالا یک ویجت هم‌شکل خودش برای صفحهٔ اصلی گوشی دارد: با یک لمس همان روش وصل یا قطع می‌شود و چراغش می‌گوید وصل است یا در حال اتصال. اگر روشی پیش از اتصال کاری لازم داشته باشد (حساب، فهرست سرور)، لمس، صفحهٔ همان روش را باز می‌کند. از «ویجت استدیو»، یا با نگه داشتن جای خالی صفحهٔ اصلی گوشی › ویجت‌ها › TurboVPN اضافه می‌شود.",
                             Icons.Default.Widgets
                         ),
                         ChangelogItem(
@@ -683,7 +683,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.SimCard
                         ),
                         ChangelogItem(
-                            "کاشی MLMVPN با همهٔ موتورها",
+                            "کاشی TurboVPN با همهٔ موتورها",
                             "کاشی نوار بالای گوشی حالا OpenVPN و همهٔ موتورها را می‌شناسد، درست قطع می‌کند و همان را دوباره وصل می‌کند.",
                             Icons.Default.PowerSettingsNew
                         ),
@@ -2438,7 +2438,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.BugReport
                         ),
                         ChangelogItem(
-                            "GATE MLMVPN — موتور اتصال تازه (جدید)",
+                            "GATE TurboVPN — موتور اتصال تازه (جدید)",
                             "یک روش اتصال کاملاً تازه با دکمهٔ بزرگ وسط منوی پایین. روی TCP پورت ۴۴۳ کار می‌کند، برای همین روی خطوطی که UDP محدود است هم می‌گیرد. هزاران سرور از سراسر دنیا با پرچم کشور، و هر سروری که تا امروز دیده شده در یک آرشیو نگه داشته می‌شود، نه فقط سرورهای زندهٔ همین لحظه.",
                             Icons.Default.Public
                         ),
@@ -2479,7 +2479,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "انیمیشن شروع برنامه",
-                            "لوگوی MLMVPN حالا به یک موشک تبدیل می‌شود و بالا می‌رود. صفحهٔ اصلی هم پشت همین انیمیشن آماده می‌شود تا زمانی از دست نرود.",
+                            "لوگوی TurboVPN حالا به یک موشک تبدیل می‌شود و بالا می‌رود. صفحهٔ اصلی هم پشت همین انیمیشن آماده می‌شود تا زمانی از دست نرود.",
                             Icons.Default.Star
                         )
                     )
@@ -2643,8 +2643,8 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.Language
                         ),
                         ChangelogItem(
-                            "پنل اختصاصی MLMVPN",
-                            "اضافه‌شدن پنل قدرتمند MLMVPN با قابلیت ارائه کانفیگ‌های پایدار XHTTP.",
+                            "پنل اختصاصی TurboVPN",
+                            "اضافه‌شدن پنل قدرتمند TurboVPN با قابلیت ارائه کانفیگ‌های پایدار XHTTP.",
                             Icons.Default.Settings
                         ),
                         ChangelogItem(
@@ -2772,7 +2772,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "Gereh: the app's tiles and settings in chats",
-                            "From the attach menu («MLMVPN» and «Settings») send one of the app's tiles or settings; it shows as a card with an «Open in MLMVPN» button, and one tap opens that very part of the app for whoever gets it. Each phone draws the card itself, so it never needs downloading, even when forwarded.",
+                            "From the attach menu («TurboVPN» and «Settings») send one of the app's tiles or settings; it shows as a card with an «Open in TurboVPN» button, and one tap opens that very part of the app for whoever gets it. Each phone draws the card itself, so it never needs downloading, even when forwarded.",
                             Icons.Default.Apps
                         ),
                         ChangelogItem(
@@ -2842,7 +2842,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "Gereh: one official channel and group with Dr.Net",
-                            "MLMVPN's and Dr.Net's users now share one official channel and one official group, each app showing it under its own name.",
+                            "TurboVPN's and Dr.Net's users now share one official channel and one official group, each app showing it under its own name.",
                             Icons.Default.Groups
                         ),
                         ChangelogItem(
@@ -3037,7 +3037,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                     listOf(
                         ChangelogItem(
                             "Gereh, a phone-to-phone messenger (new tile «گره»)",
-                            "A messenger with Telegram's look and features and no server at all: a message goes straight from your phone to your contact's, and everything is end-to-end encrypted. No phone number or email: your identity is a key made on the phone, with a name like «ehsan·4821». Add a contact by QR or card link, or «add nearby» over Bluetooth or Wi-Fi with a 4-emoji check. Messages arrive over a shared Wi-Fi even without internet, over Bluetooth when you are close, and over the internet through volunteers -- the users' own phones and computers. One-to-one chats, groups with an owner and admins, channels (only admins post), photos, video, files and voice messages, profile, group and channel photos, and chat folders. Notifications while the app is closed, and MLMVPN's own language with full Persian. Gereh runs in a process of its own, so its errors never touch the VPN.",
+                            "A messenger with Telegram's look and features and no server at all: a message goes straight from your phone to your contact's, and everything is end-to-end encrypted. No phone number or email: your identity is a key made on the phone, with a name like «ehsan·4821». Add a contact by QR or card link, or «add nearby» over Bluetooth or Wi-Fi with a 4-emoji check. Messages arrive over a shared Wi-Fi even without internet, over Bluetooth when you are close, and over the internet through volunteers -- the users' own phones and computers. One-to-one chats, groups with an owner and admins, channels (only admins post), photos, video, files and voice messages, profile, group and channel photos, and chat folders. Notifications while the app is closed, and TurboVPN's own language with full Persian. Gereh runs in a process of its own, so its errors never touch the VPN.",
                             Icons.Default.Chat
                         ),
                         ChangelogItem(
@@ -3047,7 +3047,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "Gereh: invite links and the official channel and group",
-                            "A group or channel now has an invite link («mlmchat://g/…»), with or without an admin's approval; a tap on it in any chat opens the join page. Every Gereh user is in the official channel and group «MLMVPN Official» from the first start (in the channel only its admins post, in the group anyone can write); posts pass from phone to phone. Nobody leaves or deletes these two; they can be muted or archived.",
+                            "A group or channel now has an invite link («mlmchat://g/…»), with or without an admin's approval; a tap on it in any chat opens the join page. Every Gereh user is in the official channel and group «TurboVPN Official» from the first start (in the channel only its admins post, in the group anyone can write); posts pass from phone to phone. Nobody leaves or deletes these two; they can be muted or archived.",
                             Icons.Default.Forum
                         ),
                         ChangelogItem(
@@ -3077,7 +3077,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "Russian and Chinese (Русский, 简体中文)",
-                            "Two new languages for the whole app and for Gereh, chosen in Settings › App Language; Gereh follows it with «Same as MLMVPN» or takes its own. In this version the menus, buttons and messages are translated (about 5,600 of the app's texts and all of Gereh's own); part of the text inside some pages, and Telegram's original screens in Gereh, are still in English and follow in the next versions.",
+                            "Two new languages for the whole app and for Gereh, chosen in Settings › App Language; Gereh follows it with «Same as TurboVPN» or takes its own. In this version the menus, buttons and messages are translated (about 5,600 of the app's texts and all of Gereh's own); part of the text inside some pages, and Telegram's original screens in Gereh, are still in English and follow in the next versions.",
                             Icons.Default.Language
                         ),
                         ChangelogItem(
@@ -3142,7 +3142,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "A widget for every connection method",
-                            "Every connection tile of the app (WireGuard, MASQUE, WARP, Psiphon, Tor, Geph, Lantern, FLUX, FENIX, Amnezia, Outline, OpenVPN, V2Ray and the rest) now has a widget for the phone's home screen that looks like it: one tap connects or disconnects that method, and its lamp says whether it is on or connecting. When a method needs something first (an account, a server list), the tap opens its page instead. Add them from Widget Studio, or by long-pressing an empty spot on the home screen › Widgets › MLMVPN.",
+                            "Every connection tile of the app (WireGuard, MASQUE, WARP, Psiphon, Tor, Geph, Lantern, FLUX, FENIX, Amnezia, Outline, OpenVPN, V2Ray and the rest) now has a widget for the phone's home screen that looks like it: one tap connects or disconnects that method, and its lamp says whether it is on or connecting. When a method needs something first (an account, a server list), the tap opens its page instead. Add them from Widget Studio, or by long-pressing an empty spot on the home screen › Widgets › TurboVPN.",
                             Icons.Default.Widgets
                         ),
                         ChangelogItem(
@@ -3406,7 +3406,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.SimCard
                         ),
                         ChangelogItem(
-                            "The MLMVPN tile with every engine",
+                            "The TurboVPN tile with every engine",
                             "The Quick Settings tile now knows OpenVPN and every engine, disconnects them properly and brings back the same one.",
                             Icons.Default.PowerSettingsNew
                         ),
@@ -5161,7 +5161,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.BugReport
                         ),
                         ChangelogItem(
-                            "GATE MLMVPN — a new connection engine (new)",
+                            "GATE TurboVPN — a new connection engine (new)",
                             "A completely new way to connect, behind the big button in the middle of the bottom bar. It runs over TCP on port 443, so it works even on lines where UDP is restricted. Thousands of servers worldwide with country flags, and every server seen so far is kept in an archive — not just the ones live at this moment.",
                             Icons.Default.Public
                         ),
@@ -5202,7 +5202,7 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                         ),
                         ChangelogItem(
                             "Startup animation",
-                            "The MLMVPN logo now turns into a rocket and lifts off. The main screen loads behind the animation, so none of that time is wasted.",
+                            "The TurboVPN logo now turns into a rocket and lifts off. The main screen loads behind the animation, so none of that time is wasted.",
                             Icons.Default.Star
                         )
                     )
@@ -5366,8 +5366,8 @@ fun changelogVersions(isFa: Boolean): List<ChangelogVersion> =
                             Icons.Default.Language
                         ),
                         ChangelogItem(
-                            "MLMVPN Exclusive Panel",
-                            "Added the robust MLMVPN panel, offering high-stability XHTTP configs.",
+                            "TurboVPN Exclusive Panel",
+                            "Added the robust TurboVPN panel, offering high-stability XHTTP configs.",
                             Icons.Default.Settings
                         ),
                         ChangelogItem(

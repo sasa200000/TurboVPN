@@ -286,8 +286,8 @@ fun WidgetStudioScreen(onBack: () -> Unit) {
         IosAlert(
             title = tr("افزودن دستی ویجت", "Adding the widget by hand"),
             message = tr(
-                "صفحهٔ اصلی گوشی خودکار ویجت را قبول نکرد. جای خالی صفحهٔ اصلی را چند ثانیه نگه دارید، «ویجت‌ها» را بزنید، MLMVPN را پیدا کنید و ویجت دلخواه را روی صفحه بکشید.",
-                "The phone's home screen did not accept the widget automatically. Long-press an empty spot on the home screen, tap «Widgets», find MLMVPN and drag the widget you want onto the screen.",
+                "صفحهٔ اصلی گوشی خودکار ویجت را قبول نکرد. جای خالی صفحهٔ اصلی را چند ثانیه نگه دارید، «ویجت‌ها» را بزنید، TurboVPN را پیدا کنید و ویجت دلخواه را روی صفحه بکشید.",
+                "The phone's home screen did not accept the widget automatically. Long-press an empty spot on the home screen, tap «Widgets», find TurboVPN and drag the widget you want onto the screen.",
             ),
             actions = listOf(IosAlertAction(tr("باشه", "OK"), onClick = { manualHelp = false })),
             onDismiss = { manualHelp = false },
@@ -433,8 +433,8 @@ private fun StudioMain(
             )
         }
         SettingsFooter(tr(
-            "هر کاشی اتصال برنامه یک ویجت هم‌شکل خودش دارد. برای افزودن دستی: جای خالی صفحهٔ اصلی گوشی را نگه دارید › ویجت‌ها › MLMVPN.",
-            "Every connection tile of the app has a widget that looks like it. To add one by hand: long-press an empty spot on the home screen › Widgets › MLMVPN.",
+            "هر کاشی اتصال برنامه یک ویجت هم‌شکل خودش دارد. برای افزودن دستی: جای خالی صفحهٔ اصلی گوشی را نگه دارید › ویجت‌ها › TurboVPN.",
+            "Every connection tile of the app has a widget that looks like it. To add one by hand: long-press an empty spot on the home screen › Widgets › TurboVPN.",
         ))
         Spacer(Modifier.height(28.dp))
     }

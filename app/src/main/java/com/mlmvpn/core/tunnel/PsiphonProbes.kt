@@ -464,7 +464,7 @@ object PsiphonProbes {
             .connectTimeout(timeoutMs, TimeUnit.MILLISECONDS).readTimeout(timeoutMs, TimeUnit.MILLISECONDS)
             .callTimeout(timeoutMs + 3_000, TimeUnit.MILLISECONDS)
             .build()
-        val call = client.newCall(Request.Builder().url("https://www.cloudflare.com/cdn-cgi/trace").header("User-Agent", "MLMVPN").build())
+        val call = client.newCall(Request.Builder().url("https://www.cloudflare.com/cdn-cgi/trace").header("User-Agent", "TurboVPN").build())
         return suspendCancellableCoroutine { cont ->
             cont.invokeOnCancellation { call.cancel() }
             call.enqueue(object : Callback {

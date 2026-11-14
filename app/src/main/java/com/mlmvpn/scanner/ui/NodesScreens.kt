@@ -96,7 +96,7 @@ fun nodeBadge(node: VpnNode): Pair<String, Color> {
     val isFree = node.engineType == "Manual" &&
         node.groupTitle == com.mlmvpn.scanner.engines.freeconfig.FreeConfigEngine.GROUP_NAME
     return when {
-        node.id.startsWith("default_mlmvpn") -> "MLMVPN" to Ios.Green
+        node.id.startsWith("default_mlmvpn") -> "TurboVPN" to Ios.Green
         isSni -> "SNI" to Ios.Teal
         isMitm -> S(R.string.fronting) to Ios.Teal
         isFree -> S(R.string.free) to Ios.Purple

@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import java.util.UUID
 
 /**
- * Puts the MAE egress Worker on the user's OWN Cloudflare account -- MLMVPN runs no server for it.
+ * Puts the MAE egress Worker on the user's OWN Cloudflare account -- TurboVPN runs no server for it.
  *
  * Idempotent (a fixed script name: re-running updates in place), versioned (the version the app
  * ships is compared with the one deployed and upgraded when newer), removable, and it keeps the

@@ -84,7 +84,7 @@ fun SubscriptionGateScreen(
         ) {
             // ── Neon title ──
             NeonText(
-                text = "OilVPN",
+                text = "TurboVPN",
                 colorCycleOffset = neonClock.floatValue,
                 fontSize = 36.sp,
                 fontWeight = FontWeight.Bold,

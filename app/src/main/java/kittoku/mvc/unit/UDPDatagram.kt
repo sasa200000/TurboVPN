@@ -75,7 +75,7 @@ internal class UDPDatagram : DataUnit { // for only TCP Connection, not UDP acce
         val givenChecksum = buffer.short // discard given checksum
 
          if (payloadLength > 0) {
-             // MLMVPN: the datagram's own length is the authority on where the payload ends.
+             // TurboVPN: the datagram's own length is the authority on where the payload ends.
              // Realigning to it means a payload parser that reads a little short or a little
              // long cannot desynchronise the rest of the stream.
              val startPayload = buffer.position()

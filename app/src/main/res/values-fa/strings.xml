@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OilVPN</string>
+    <string name="app_name">TurboVPN</string>
     <string name="cloud_no_account_connected">هیچ اکانتی متصل نیست</string>
     <string name="cloud_press_add_button">برای دریافت کانفیگ، دکمه افزودن را بزنید.</string>
     <string name="cloud_add_account">افزودن اکانت</string>
@@ -125,7 +125,7 @@
     <string name="scanner_copy_ips_button">کپی آی‌پی‌ها</string>
     <string name="scanner_vpn_active_warning">اخطار VPN فعال</string>
     <string name="scanner_vpn_active_desc">یک VPN فعال روی سیستم شما شناسایی شد. برای تست دقیق (Real Delay)، ترافیک باید مستقیماً از طریق اینترنت شما عبور کند.\nلطفاً برای ادامه تست VPN فعلی را خاموش کنید.</string>
-    <string name="scanner_turn_off_vpn_and_scan">خاموش کردن OilVPN و اسکن</string>
+    <string name="scanner_turn_off_vpn_and_scan">خاموش کردن TurboVPN و اسکن</string>
     <string name="scanner_understood">متوجه شدم</string>
     <string name="scanner_cancel">انصراف</string>
     <string name="scanner_test_archive_ips_health">تست سلامت آی‌پی‌های آرشیو</string>
@@ -262,7 +262,7 @@
     <string name="common_cancel">انصراف</string>
     <string name="common_close">بستن</string>
     <string name="about_title">درباره ما</string>
-    <string name="about_desc">نام OilVPN برگرفته از معماری پیشرفته‌ی Multi-Layer Multiplexer است. ما مرزهای ارتباطات سنتی را درنوردیده‌ایم تا به جای تکیه بر یک اتصال ساده، یک پلتفرم فوق‌هوشمند و چندلایه خلق کنیم. این اپلیکیشن، ترافیک شما را از امن‌ترین و پرسرعت‌ترین مسیرها هدایت می‌کند. رسالت ما، ارائه یک شبکه پایدار و فوق‌سریع است که محدودیت‌های اینترنتی را در هم می‌شکند و تجربه‌ای آزاد و بی‌نظیر از دنیای وب را برای شما به ارمغان می‌آورد.</string>
+    <string name="about_desc">نام TurboVPN برگرفته از معماری پیشرفته‌ی Multi-Layer Multiplexer است. ما مرزهای ارتباطات سنتی را درنوردیده‌ایم تا به جای تکیه بر یک اتصال ساده، یک پلتفرم فوق‌هوشمند و چندلایه خلق کنیم. این اپلیکیشن، ترافیک شما را از امن‌ترین و پرسرعت‌ترین مسیرها هدایت می‌کند. رسالت ما، ارائه یک شبکه پایدار و فوق‌سریع است که محدودیت‌های اینترنتی را در هم می‌شکند و تجربه‌ای آزاد و بی‌نظیر از دنیای وب را برای شما به ارمغان می‌آورد.</string>
     <string name="about_telegram">تلگرام</string>
     <string name="about_github">گیت‌هاب</string>
     <string name="about_youtube">یوتیوب</string>
@@ -814,7 +814,7 @@
     <string name="vpn_disconnected">قطع</string>
     <string name="vpn_kill_switch">قطع‌کن اضطراری</string>
     <string name="vpn_reconnect">اتصال دوباره</string>
-    <string name="tile_label_vpn">OilVPN</string>
+    <string name="tile_label_vpn">TurboVPN</string>
     <string name="tile_label_tunnel">تونل Mlm</string>
     <string name="wg_data_check">بررسی عبور واقعی داده</string>
     <string name="wg_data_check_hint">پیش از اعلام موفقیت، صبر می‌کند تا ترافیک واقعی رد شود. دست‌دهی وایرگارد روی اپراتورهایی کامل می‌شود که بعد هر بستهٔ داده را دور می‌ریزند، پس دست‌دهی به‌تنهایی چیزی را ثابت نمی‌کند. خاموش‌کردنش اتصال را سریع‌تر می‌کند و معنای «متصل» را کم.</string>
@@ -1200,7 +1200,7 @@
     <string name="minutes_ago"> دقیقه پیش</string>
     <string name="mlm_account_not_found">اکانت MLM یافت نشد!</string>
     <string name="mlm_gateway">گیت‌وی MLM</string>
-    <string name="mlmvpn_private_list">لیست اختصاصی OilVPN · </string>
+    <string name="mlmvpn_private_list">لیست اختصاصی TurboVPN · </string>
     <string name="months_ago"> ماه پیش</string>
     <string name="move_configs_to_the_connection_page">انتقال %1$s کانفیگ به صفحهٔ اتصال</string>
     <string name="my_list">فهرست من</string>
@@ -1768,7 +1768,7 @@
     <string name="save_and_fetch">ذخیره و دریافت</string>
     <string name="save_as_a_file">ذخیره به‌صورت فایل</string>
     <string name="save_as_a_file_the_file_is">«ذخیره به‌صورت فایل» استفاده کنید — فایل عیناً و کامل نوشته می‌شود. </string>
-    <string name="saved_to_your_downloads_folder_mlmvpn_relay">فایل در پوشهٔ دانلودها ذخیره شد: OilVPN_relay.gs</string>
+    <string name="saved_to_your_downloads_folder_mlmvpn_relay">فایل در پوشهٔ دانلودها ذخیره شد: TurboVPN_relay.gs</string>
     <string name="scan_qr">اسکن QR</string>
     <string name="scan_the_config_s_qr_code">کد QR کانفیگ را اسکن کنید</string>
     <string name="scanner">اسکنر · </string>
@@ -2522,7 +2522,7 @@
     <string name="manual_2">دستی</string>
     <string name="means_throwing_away_the_very_thing_that">یعنی دور ریختن همان چیزی که مشکل را نشان می‌دهد.</string>
     <string name="medium_2">متوسط</string>
-    <string name="mlmvpn_private_list_2">لیست اختصاصی OilVPN</string>
+    <string name="mlmvpn_private_list_2">لیست اختصاصی TurboVPN</string>
     <string name="myself_you_can_leave_it_at_any">را انجام می‌دهم؛ هر جا خواستید می‌توانید رهایش کنید.</string>
     <string name="network_filtering_a_job_for_the_vpn">فیلتر شبکه‌ای (کار VPN، نه این بخش)</string>
     <string name="no_bridge_straight_to_the_tor_network">بدون پل، مستقیم به شبکهٔ تور. برای شبکه‌ای که تور را نبسته باشد</string>
@@ -2683,7 +2683,7 @@
     <string name="wireguard_game_trial">وایرگارد (تست بازی)</string>
     <string name="wireguard_is_active">وایرگارد فعال است</string>
     <string name="wireguard_scan">اسکن وایرگارد</string>
-    <string name="with_mlmvpn_stay_connected_always_whatever_the">با OilVPN همیشه، در هر شرایطی، متصل بمان</string>
+    <string name="with_mlmvpn_stay_connected_always_whatever_the">با TurboVPN همیشه، در هر شرایطی، متصل بمان</string>
     <string name="with_no_filter_every_server_in_this">بدون فیلتر، همهٔ سرورهای این فهرست نمایش داده می‌شوند. می‌توانید چند کشور را </string>
     <string name="word_processing">پردازش کلمه</string>
     <string name="working_ips_were_found_but_no_combination">آی‌پی سالم پیدا شد ولی ترکیبی ساخته نشد. گروهی که برای ترکیب انتخاب شد </string>
@@ -2807,7 +2807,7 @@
     <string name="in_quick_connect_i_get_no_responding">در اتصال سریع پیام «هیچ سرور پاسخ‌گویی پیدا نشد» می‌گیرم، چه کار کنم؟</string>
     <string name="in_quick_connect_what_does_the_green">در اتصال سریع تیک سبز کنار اسم سرور یعنی چه؟</string>
     <string name="in_the_nhn_section_when_i_create">چرا در بخش NHN وقتی کاربر با حجم و زمان مشخص میسازم، کانفیگ خروجی کار نمیکند؟</string>
-    <string name="in_your_phone_s_settings_search_type">در جستجوی تنظیمات گوشی بنویسید «trusted credentials» یا «گواهی»، بعد سربرگ «کاربر / User» را انتخاب کنید. گواهی ما با نام «MLM VPN Local CA …» آنجاست؛ رویش بزنید و «حذف / Remove» را انتخاب کنید. مسیر دقیق برای سامسونگ، شیائومی، پیکسل، هواوی، اوپو/ریلمی و ویوو به‌صورت جداگانه در آموزش شماره ۱۷ نوشته شده. اگر می‌خواهید همه‌ی گواهی‌های نصب‌شده را یک‌جا پاک کنید، در همان صفحه گزینه‌ی «پاک کردن اطلاعات ورود (Clear credentials)» هست — ولی توجه کنید که آن گزینه همه را پاک می‌کند نه فقط گواهی ما. بعد از حذف، تیک مرحله‌ی دوم داخل پوشه‌ی دامین‌فرانتینگ خودش برداشته می‌شود.</string>
+    <string name="in_your_phone_s_settings_search_type">در جستجوی تنظیمات گوشی بنویسید «trusted credentials» یا «گواهی»، بعد سربرگ «کاربر / User» را انتخاب کنید. گواهی ما با نام «Turbo VPN Local CA …» آنجاست؛ رویش بزنید و «حذف / Remove» را انتخاب کنید. مسیر دقیق برای سامسونگ، شیائومی، پیکسل، هواوی، اوپو/ریلمی و ویوو به‌صورت جداگانه در آموزش شماره ۱۷ نوشته شده. اگر می‌خواهید همه‌ی گواهی‌های نصب‌شده را یک‌جا پاک کنید، در همان صفحه گزینه‌ی «پاک کردن اطلاعات ورود (Clear credentials)» هست — ولی توجه کنید که آن گزینه همه را پاک می‌کند نه فقط گواهی ما. بعد از حذف، تیک مرحله‌ی دوم داخل پوشه‌ی دامین‌فرانتینگ خودش برداشته می‌شود.</string>
     <string name="iran_configs_1_to_8_no_server">• **کانفیگ‌های ایران (۱ تا ۸):** بدون سرور، برای باز شدن سایت‌ها و اپ‌های عمومی. اولین چیزی که باید امتحان کنید.\n• **پنل ابری (BPB / EDG / نهان):** سرور شخصی روی حساب کلادفلر خودتان؛ پایدارترین گزینه برای همه‌ی اپ‌ها، ولی باید یک‌بار دیپلوی کنید.\n• **دامین‌فرانتینگ:** بدون سرور و بدون هزینه، ولی فقط داخل مرورگر و نیاز به نصب گواهی دارد.\n• **تب گیمینگ:** برای کم کردن پینگ بازی، نه برای باز کردن سایت.\n• **اضطراری:** وقتی همه‌چیز مسدود است و حتی نمی‌توانید کانفیگ بگیرید.</string>
     <string name="is_installing_this_certificate_dangerous_for_my">آیا نصب این گواهی برای گوشی من خطرناک است؟ می‌توانم گواهی دوستم را نصب کنم؟</string>
     <string name="is_there_a_per_app_setting_choosing">آیا امکان استفاده از قابلیت \\"Per-app setting\\" (انتخاب برنامه‌های خاص برای عبور از VPN) وجود دارد؟</string>
@@ -5745,7 +5745,7 @@
     <string name="gereh_wipe_remove">حذف کامل گره</string>
     <string name="gereh_wipe_clear_info">همهٔ پیام‌ها، عکس‌ها، ویدیوها و فایل‌های گره از این گوشی پاک می‌شود، با پست‌های کانال‌های تلگرامی که در گره دنبال می‌کنی. حساب، مخاطبان، گروه‌ها و کانال‌هایت خالی می‌مانند، و کانال و گروه رسمی پست‌هایشان را دارند. برگشت ندارد.</string>
     <string name="gereh_wipe_account_info">این گوشی اول از همهٔ گروه‌ها و کانال‌هایت بیرون می‌رود (اعضا می‌بینند)، بعد همه‌چیز گره روی آن پاک می‌شود: حساب، مخاطبان، پیام‌ها و فایل‌ها. گره سرور ندارد، پس حسابت همین است؛ مخاطبانت کارت قدیمی‌ات را نگه می‌دارند. با باز کردن دوبارهٔ گره، حساب تازه ساخته می‌شود. برگشت ندارد.</string>
-    <string name="gereh_wipe_remove_info">مثل حذف حساب، و گره هم از OilVPN بیرون می‌رود: نه کاشی، نه اعلان، نه کار در پس‌زمینه، مثل اینکه OilVPN اصلاً گره نداشته. فایل‌های برنامهٔ گره (حدود ۳۶ مگابایت) جزو خود اپ نصب‌شده است و اندروید اجازهٔ پاک کردنشان را به اپ نمی‌دهد. از تنظیمات › «بازگرداندن گره» برمی‌گردد.</string>
+    <string name="gereh_wipe_remove_info">مثل حذف حساب، و گره هم از TurboVPN بیرون می‌رود: نه کاشی، نه اعلان، نه کار در پس‌زمینه، مثل اینکه TurboVPN اصلاً گره نداشته. فایل‌های برنامهٔ گره (حدود ۳۶ مگابایت) جزو خود اپ نصب‌شده است و اندروید اجازهٔ پاک کردنشان را به اپ نمی‌دهد. از تنظیمات › «بازگرداندن گره» برمی‌گردد.</string>
     <string name="gereh_wipe_yes">پاک کن</string>
     <string name="gereh_wipe_no">انصراف</string>
     <string name="gereh_wipe_clearing">در حال پاک کردن دادهٔ گره…</string>

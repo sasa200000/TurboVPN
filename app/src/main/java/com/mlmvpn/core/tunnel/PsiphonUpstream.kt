@@ -332,7 +332,7 @@ object PsiphonUpstream {
                 (SSLSocketFactory.getDefault() as SSLSocketFactory).createSocket(s, TRACE_HOST, 443, true).use { t ->
                     t as SSLSocket
                     t.startHandshake()
-                    t.outputStream.write("GET /cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: MLMVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
+                    t.outputStream.write("GET /cdn-cgi/trace HTTP/1.1\r\nHost: $TRACE_HOST\r\nUser-Agent: TurboVPN\r\nConnection: close\r\n\r\n".toByteArray(Charsets.US_ASCII))
                     t.outputStream.flush()
                     done(statusOf(head(t.inputStream)) == 200)
                 }

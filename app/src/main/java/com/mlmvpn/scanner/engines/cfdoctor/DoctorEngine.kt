@@ -106,7 +106,7 @@ object DoctorEngine {
                 _state.value = _state.value.copy(failed = true)
                 // Even a run that broke leaves a report saying where, so the next file is not empty.
                 val line = "VERDICT internal_error:${e.javaClass.simpleName}@${_state.value.step}\n"
-                report = if (report.isBlank()) "HEADER MLMVPN DOCTOR v3 complete=false\n$line" else "$report\n$line"
+                report = if (report.isBlank()) "HEADER TurboVPN DOCTOR v3 complete=false\n$line" else "$report\n$line"
             } finally {
                 val p = _state.value.progress
                 _state.value = _state.value.copy(

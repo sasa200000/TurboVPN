@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 //
 // Four kinds of thing are listed, and they are updated in genuinely different ways:
 //
-//   برنامه    MLM VPN itself, through the updater it already had (update/UpdateChecker.kt).
+//   برنامه    Turbo VPN itself, through the updater it already had (update/UpdateChecker.kt).
 //   هسته‌ها   the native engines. A downloaded engine is run from the store's own folder, never
 //             from nativeLibraryDir (which only the package installer can write) — see
 //             StoreEngines.kt for how that is possible on Android 10+ and what it cannot cover.

@@ -108,7 +108,7 @@ object QuickConnectRepository {
         /** When set, entries come from [FreeConfigEngine] instead of a URL of our own. */
         val pool: Boolean = false,
         /**
-         * When set, entries come from the MLMVPN shared pool.
+         * When set, entries come from the TurboVPN shared pool.
          *
          * It cannot be a plain URL like the others: the request has to be signed with this
          * install's enrolment, and what comes back is scoped to the caller's own network.

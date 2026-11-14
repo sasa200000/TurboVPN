@@ -86,7 +86,7 @@ object MitmCertManager {
      */
     fun generate(context: Context): Boolean = try {
         val suffix = BigInteger(24, java.security.SecureRandom()).toString(16).uppercase(Locale.US)
-        val cn = "MLM VPN Local CA $suffix"
+        val cn = "Turbo VPN Local CA $suffix"
 
         val kp = KeyPairGenerator.getInstance("RSA").apply { initialize(2048) }.generateKeyPair()
         val der = buildSelfSignedCa(cn, kp.public.encoded, kp.private)
@@ -184,7 +184,7 @@ object MitmCertManager {
         if (!cert.exists() || !canUseDirectInstaller) null
         else KeyChain.createInstallIntent().apply {
             putExtra(KeyChain.EXTRA_CERTIFICATE, cert.readBytes())
-            putExtra(KeyChain.EXTRA_NAME, commonName(context) ?: "MLM VPN Local CA")
+            putExtra(KeyChain.EXTRA_NAME, commonName(context) ?: "Turbo VPN Local CA")
         }
     } catch (_: Exception) {
         null
@@ -264,7 +264,7 @@ object MitmCertManager {
         val algId = seq(oid(OID_SHA256_RSA), tlv(0x05, ByteArray(0)))
         val name = seq(
             rdn(OID_CN, cn),
-            rdn(OID_O, "MLM VPN")
+            rdn(OID_O, "Turbo VPN")
         )
 
         val now = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply {

@@ -149,7 +149,7 @@ object GtGithub {
             if (e.status != 404) throw e
             gh(token, "POST", "/user/repos", JSONObject()
                 .put("name", REPO_NAME).put("private", true).put("auto_init", true)
-                .put("description", "MLMVPN GitHub Tunnel — auto-managed, disposable cloud sessions. Safe to delete; it will be recreated automatically."))
+                .put("description", "TurboVPN GitHub Tunnel — auto-managed, disposable cloud sessions. Safe to delete; it will be recreated automatically."))
         }
         return Repo(repo.optString("full_name"), me, repo.optString("default_branch", "main"))
     }
@@ -166,7 +166,7 @@ object GtGithub {
             if (e.status != 404) throw e
         }
         gh(token, "PUT", "/repos/$repo/contents/$path", JSONObject()
-            .put("message", if (sha != null) "MLMVPN: update $what" else "MLMVPN: add $what")
+            .put("message", if (sha != null) "TurboVPN: update $what" else "TurboVPN: add $what")
             .put("content", Base64.encodeToString(content.toByteArray(Charsets.UTF_8), Base64.NO_WRAP))
             .apply { if (sha != null) put("sha", sha) })
         return true
@@ -215,7 +215,7 @@ object GtGithub {
         try {
             val f = gh(token, "GET", "/repos/$repo/contents/sessions/$sessionId.json")
             gh(token, "DELETE", "/repos/$repo/contents/sessions/$sessionId.json",
-                JSONObject().put("message", "MLMVPN: clear session data").put("sha", f.optString("sha")))
+                JSONObject().put("message", "TurboVPN: clear session data").put("sha", f.optString("sha")))
         } catch (_: Exception) {}
     }
 

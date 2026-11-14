@@ -35,7 +35,7 @@ object AppLocaleManager {
         // Loc caches a Resources pinned to the old locale; without this the activity would be
         // recreated correctly and every non-composable string would still be in the old language.
         Loc.bind(context)
-        // Gereh follows MLMVPN's language unless its own setting says otherwise (GerehLocale).
+        // Gereh follows TurboVPN's language unless its own setting says otherwise (GerehLocale).
         org.mlmvpn.chat.bridge.GerehService.languageChanged(context)
     }
 

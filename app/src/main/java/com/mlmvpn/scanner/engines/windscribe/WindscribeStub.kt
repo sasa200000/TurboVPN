@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /**
- * OilVPN stub. The Windscribe engine (its SDK, `com.wsnet.lib`) was not shipped in the
+ * TurboVPN stub. The Windscribe engine (its SDK, `com.wsnet.lib`) was not shipped in the
  * public source release and cannot be rebuilt here, so this stub keeps the API surface
  * every other file references — the engine reports signed-out and never connects.
  * The Windscribe tile is hidden (see ScreenVisibility/HomeDestinations edits).

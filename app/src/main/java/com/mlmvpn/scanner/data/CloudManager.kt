@@ -3098,7 +3098,7 @@ class CloudManager private constructor(private val context: Context) {
     }
 
     /**
-     * Deploys the MLMVPN shared config pool.
+     * Deploys the TurboVPN shared config pool.
      *
      * Unlike the panels, this one is deployed ONCE on one account and read by every install -- it
      * is infrastructure, not a per-user resource. It needs both a D1 database (the ledger of which

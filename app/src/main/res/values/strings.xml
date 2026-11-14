@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OilVPN</string>
+    <string name="app_name">TurboVPN</string>
     <string name="cloud_no_account_connected">No account connected</string>
     <string name="cloud_press_add_button">Press the Add button to get configs.</string>
     <string name="cloud_add_account">Add Account</string>
@@ -124,7 +124,7 @@
     <string name="scanner_copy_ips_button">Copy IPs</string>
     <string name="scanner_vpn_active_warning">Active VPN Warning</string>
     <string name="scanner_vpn_active_desc">An active VPN was detected on your system. For accurate tests (Real Delay), traffic must bypass VPN.\nPlease turn off the current VPN to continue testing.</string>
-    <string name="scanner_turn_off_vpn_and_scan">Turn off OilVPN &amp; Scan</string>
+    <string name="scanner_turn_off_vpn_and_scan">Turn off TurboVPN &amp; Scan</string>
     <string name="scanner_understood">Understood</string>
     <string name="scanner_cancel">Cancel</string>
     <string name="scanner_test_archive_ips_health">Test Archive IPs Health</string>
@@ -266,7 +266,7 @@
     <string name="common_cancel">Cancel</string>
     <string name="common_close">Close</string>
     <string name="about_title">About Us</string>
-    <string name="about_desc">The name MLMVPN is derived from its advanced core architecture: the Multi-Layer Multiplexer. We have pushed the boundaries of traditional networking by designing an ultra-intelligent, multi-layered platform instead of relying on a single connection. By simultaneously orchestrating several powerful anti-censorship engines, this application dynamically routes your traffic through the fastest and most secure paths available. Our mission is to provide a highly stable and ultra-fast network that shatters internet restrictions across multiple layers, delivering an unparalleled and truly free web experience.</string>
+    <string name="about_desc">The name TurboVPN is derived from its advanced core architecture: the Multi-Layer Multiplexer. We have pushed the boundaries of traditional networking by designing an ultra-intelligent, multi-layered platform instead of relying on a single connection. By simultaneously orchestrating several powerful anti-censorship engines, this application dynamically routes your traffic through the fastest and most secure paths available. Our mission is to provide a highly stable and ultra-fast network that shatters internet restrictions across multiple layers, delivering an unparalleled and truly free web experience.</string>
     <string name="about_telegram">Telegram</string>
     <string name="about_github">GitHub</string>
     <string name="about_youtube">YouTube</string>
@@ -822,7 +822,7 @@
          the picker lists them side by side with nothing else to tell them apart, and the one
          below used to read "NetDoctor" — the name of the project the transport stack was
          ported from — which looked like a second, unrelated app the user had not installed. -->
-    <string name="tile_label_vpn">OilVPN</string>
+    <string name="tile_label_vpn">TurboVPN</string>
     <string name="tile_label_tunnel">Mlm Tunnel</string>
     <string name="wg_data_check">Verify data actually flows</string>
     <string name="wg_data_check_hint">Waits for real traffic to pass before reporting success. A WireGuard handshake completes on carriers that then drop every data packet, so the handshake alone proves nothing. Turning this off connects faster and makes "connected" mean less.</string>
@@ -1208,7 +1208,7 @@
     <string name="minutes_ago"> minutes ago</string>
     <string name="mlm_account_not_found">MLM account not found!</string>
     <string name="mlm_gateway">MLM Gateway</string>
-    <string name="mlmvpn_private_list">OilVPN private list · </string>
+    <string name="mlmvpn_private_list">TurboVPN private list · </string>
     <string name="months_ago"> months ago</string>
     <string name="move_configs_to_the_connection_page">Move %1$s configs to the connection page</string>
     <string name="my_list">My list</string>
@@ -1776,7 +1776,7 @@
     <string name="save_and_fetch">Save and fetch</string>
     <string name="save_as_a_file">Save as a file</string>
     <string name="save_as_a_file_the_file_is">“Save as a file” — the file is written out exactly and in full. </string>
-    <string name="saved_to_your_downloads_folder_mlmvpn_relay">Saved to your Downloads folder: OilVPN_relay.gs</string>
+    <string name="saved_to_your_downloads_folder_mlmvpn_relay">Saved to your Downloads folder: TurboVPN_relay.gs</string>
     <string name="scan_qr">Scan QR</string>
     <string name="scan_the_config_s_qr_code">Scan the config\'s QR code</string>
     <string name="scanner">Scanner · </string>
@@ -2530,7 +2530,7 @@
     <string name="manual_2">Manual</string>
     <string name="means_throwing_away_the_very_thing_that">means throwing away the very thing that shows the problem.</string>
     <string name="medium_2">Medium</string>
-    <string name="mlmvpn_private_list_2">OilVPN private list</string>
+    <string name="mlmvpn_private_list_2">TurboVPN private list</string>
     <string name="myself_you_can_leave_it_at_any">myself; you can leave it at any point.</string>
     <string name="network_filtering_a_job_for_the_vpn">Network filtering (a job for the VPN, not this section)</string>
     <string name="no_bridge_straight_to_the_tor_network">No bridge, straight to the Tor network. For a network that has not blocked Tor</string>
@@ -2691,7 +2691,7 @@
     <string name="wireguard_game_trial">WireGuard (game trial)</string>
     <string name="wireguard_is_active">WireGuard is active</string>
     <string name="wireguard_scan">WireGuard scan</string>
-    <string name="with_mlmvpn_stay_connected_always_whatever_the">With OilVPN, stay connected always, whatever the conditions</string>
+    <string name="with_mlmvpn_stay_connected_always_whatever_the">With TurboVPN, stay connected always, whatever the conditions</string>
     <string name="with_no_filter_every_server_in_this">With no filter, every server in this list is shown. You can select several countries </string>
     <string name="word_processing">Word processing</string>
     <string name="working_ips_were_found_but_no_combination">Working IPs were found but no combination was built. The group chosen for combining </string>
@@ -2815,7 +2815,7 @@
     <string name="in_quick_connect_i_get_no_responding">In Quick Connect I get “no responding server was found”. What do I do?</string>
     <string name="in_quick_connect_what_does_the_green">In Quick Connect, what does the green tick next to a server name mean?</string>
     <string name="in_the_nhn_section_when_i_create">In the NHN section, when I create a user with a data and time limit, why does the resulting config not work?</string>
-    <string name="in_your_phone_s_settings_search_type">In your phone\'s settings search, type “trusted credentials” or “certificate”, then pick the “User” tab. Ours is there as “MLM VPN Local CA …”; tap it and choose “Remove”. The exact path for Samsung, Xiaomi, Pixel, Huawei, Oppo/Realme and Vivo is written out separately in tutorial 17. If you want to clear every installed certificate at once, that same page has “Clear credentials” — but note it clears all of them, not only ours. After removal, the second step\'s tick inside the domain-fronting folder clears itself.</string>
+    <string name="in_your_phone_s_settings_search_type">In your phone\'s settings search, type “trusted credentials” or “certificate”, then pick the “User” tab. Ours is there as “Turbo VPN Local CA …”; tap it and choose “Remove”. The exact path for Samsung, Xiaomi, Pixel, Huawei, Oppo/Realme and Vivo is written out separately in tutorial 17. If you want to clear every installed certificate at once, that same page has “Clear credentials” — but note it clears all of them, not only ours. After removal, the second step\'s tick inside the domain-fronting folder clears itself.</string>
     <string name="iran_configs_1_to_8_no_server">• **Iran configs (1 to 8):** no server, for opening ordinary sites and apps. The first thing to try.\n• **Cloud panel (BPB / EDG / Nahan):** your own private server on your own Cloudflare account; the most dependable option for every app, but you have to deploy it once.\n• **Domain fronting:** no server and no cost, but browser-only and it needs a certificate installed.\n• **Gaming tab:** for lowering game ping, not for opening sites.\n• **Emergency:** for when everything is blocked and you cannot even fetch a config.</string>
     <string name="is_installing_this_certificate_dangerous_for_my">Is installing this certificate dangerous for my phone? Can I install my friend\'s certificate?</string>
     <string name="is_there_a_per_app_setting_choosing">Is there a “per-app setting” (choosing which apps go through the VPN)?</string>
@@ -5753,7 +5753,7 @@ After that it builds the combinations itself, measures every one with a real req
     <string name="gereh_wipe_remove">Remove Gereh completely</string>
     <string name="gereh_wipe_clear_info">Every message, photo, video and file in Gereh is deleted from this phone, with the posts of the Telegram channels you follow there. Your account, contacts, groups and channels stay, empty, and the official channel and group keep their posts. This cannot be undone.</string>
     <string name="gereh_wipe_account_info">This phone first leaves all your groups and channels (their members see it), then everything of Gereh on it is deleted: account, contacts, messages and files. Gereh has no server, so this is your whole account; your contacts keep your old card. Opening Gereh again makes a new account. This cannot be undone.</string>
-    <string name="gereh_wipe_remove_info">Like deleting the account, and Gereh is taken out of OilVPN: no tile, no notifications, nothing in the background, as if OilVPN never had it. Gereh\'s program files (about 36 MB) are part of the installed app, and Android does not let an app delete those. Settings › Bring Gereh back returns it.</string>
+    <string name="gereh_wipe_remove_info">Like deleting the account, and Gereh is taken out of TurboVPN: no tile, no notifications, nothing in the background, as if TurboVPN never had it. Gereh\'s program files (about 36 MB) are part of the installed app, and Android does not let an app delete those. Settings › Bring Gereh back returns it.</string>
     <string name="gereh_wipe_yes">Delete</string>
     <string name="gereh_wipe_no">Cancel</string>
     <string name="gereh_wipe_clearing">Clearing Gereh\'s data…</string>

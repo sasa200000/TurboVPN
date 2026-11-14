@@ -263,7 +263,7 @@ class OutlineSourceRepo(private val app: Context) {
         private const val TAG = "OutlineSources"
         private const val PREFS = "outline_sources"
         private val NOT_MODIFIED = ByteArray(0)
-        private const val USER_AGENT = "MLMVPN-Outline"
+        private const val USER_AGENT = "TurboVPN-Outline"
         private const val SEED_KEY = "seed_shadowmere"
         /** Ten keys a page: a thousand keys is far beyond any round seen (183 on 2026-10-25). */
         private const val SHADOWMERE_MAX_PAGES = 100

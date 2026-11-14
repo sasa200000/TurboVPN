@@ -10,9 +10,9 @@ enum class CrashKind(val wire: String) { JVM("jvm"), NATIVE("native"), ANR("anr"
  */
 object CrashText {
 
-    const val JVM_HEADER = "=== MLMVPN crash ==="
-    const val NATIVE_HEADER = "=== MLMVPN native crash ==="
-    const val ANR_HEADER = "=== MLMVPN ANR ==="
+    const val JVM_HEADER = "=== TurboVPN crash ==="
+    const val NATIVE_HEADER = "=== TurboVPN native crash ==="
+    const val ANR_HEADER = "=== TurboVPN ANR ==="
 
     fun kindOf(text: String): CrashKind = when (text.lineSequence().firstOrNull()?.trim()) {
         NATIVE_HEADER -> CrashKind.NATIVE

@@ -36,7 +36,7 @@ internal const val NOTIFICATION_CERTIFICATE_ID = 4
 
 
 internal class SoftEtherVpnService : VpnService() {
-    // MLMVPN: the upstream client is driven from its own UI and reports through
+    // TurboVPN: the upstream client is driven from its own UI and reports through
     // notifications, so it exposes no state an engine can await. These two flags are the
     // whole of the addition — set at the two points Controller already knows the outcome.
     companion object {
@@ -98,7 +98,7 @@ internal class SoftEtherVpnService : VpnService() {
                 android.util.Log.d("SoftEther", "shutdown unwind: ${throwable.javaClass.simpleName}")
                 client?.kill(null)
             } else {
-                // MLMVPN: upstream only writes this to its optional log file, so the cause of
+                // TurboVPN: upstream only writes this to its optional log file, so the cause of
                 // a failed negotiation never reaches logcat and every error looks like
                 // "MVC: ERR_UNEXPECTED".
                 android.util.Log.e("SoftEther", "negotiation threw", throwable)
@@ -160,7 +160,7 @@ internal class SoftEtherVpnService : VpnService() {
     }
 
     internal fun notifyError(message: String) {
-        lastError = message // MLMVPN: surface the failure to the driving engine
+        lastError = message // TurboVPN: surface the failure to the driving engine
         notifyMessage(message,
             NOTIFICATION_ERROR_ID,
             NOTIFICATION_ERROR_CHANNEL

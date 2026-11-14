@@ -23,7 +23,7 @@ object ArenaStudio {
         val api = StudioStore.get(context).apiFor(account)
         val existing = (api.listUsers(query = ArenaPanels.ARENA_USER, limit = 10) as? StudioResult.Ok)?.value?.items
             ?.firstOrNull { it.username == ArenaPanels.ARENA_USER }
-        val user = existing ?: when (val made = api.createUser(ArenaPanels.ARENA_USER, SubscriptionPolicy(), note = "MLMVPN «میدان کانفیگ»")) {
+        val user = existing ?: when (val made = api.createUser(ArenaPanels.ARENA_USER, SubscriptionPolicy(), note = "TurboVPN «میدان کانفیگ»")) {
             is StudioResult.Ok -> made.value
             is StudioResult.Err -> error("Config Studio: ${made.error.code}")
         }
