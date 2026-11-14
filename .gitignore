@@ -1,0 +1,45 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/app/build
+/app/release
+# Gereh (MLM CHAT): the Telegram fork's build folders, when they stay in the tree
+/chat/**/build/
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+*.apk
+*.aab
+
+# Store channel build output (scripts/store-channel.js)
+/dist/
+
+# OpenVPN sources: pinned by URL + SHA-256 in source-lock.json, fetched by the scripts
+third_party/openvpn3/*
+!third_party/openvpn3/README.md
+!third_party/openvpn3/source-lock.json
+
+# Team repo (25 Oct 2026, team/README.fa.md): tool state, the code graph and crash dumps stay on each PC
+graphify-out/
+.omc/
+**/.omc/
+.kotlin/
+.claude/
+hs_err_pid*.log
+replay_pid*.log
+
+# Gereh core (mlm-chat/): build output stays on each PC; the prebuilt libmlmchat.so in
+# mlm-chat/android/core/src/main/jniLibs is kept, so the app builds without Rust
+mlm-chat/**/target/
+mlm-chat/**/target-*/
+mlm-chat/tools/*/out/
+mlm-chat/**/node_modules/
+
+# OilVPN: native libs are restored by CI from the official release APK (358MB, too big for git)
+/app/src/main/jniLibs/
+/mlm-chat/android/core/src/main/jniLibs/
+/chat/TMessagesProj/src/main/jniLibs/

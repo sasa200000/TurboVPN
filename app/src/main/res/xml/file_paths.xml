@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <cache-path name="doctor" path="doctor/" />
+    <!-- UpdateChecker downloads the new APK into cacheDir/updates/ -->
+    <cache-path name="updates" path="updates/" />
+    <!-- Config Studio writes an export here, shares it, and overwrites it next time.
+         See ui/configstudio/parts/StudioShare.kt -->
+    <cache-path name="studio" path="studio-export/" />
+    <!-- «پشتیبان‌گیری و بازگردانی» shares a backup file from here; see ui/backup/BackupScreen.kt -->
+    <cache-path name="backup" path="backup-export/" />
+    <!-- «NPV»: a kept NPV Tunnel file, copied here and handed to NPV Tunnel; see engines/npv/NpvEngine.kt -->
+    <cache-path name="npv" path="npv-open/" />
+</paths>

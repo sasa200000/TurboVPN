@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Only to restore a tunnel the user had running before the reboot, and only when they
+         turned that on: BootReceiver returns immediately unless the preference is set. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- VPN Permission -->
+    <uses-permission android:name="android.permission.BIND_VPN_SERVICE"
+        android:required="false" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <!-- In-app update: install the downloaded APK -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- Local network sharing: starting a local-only hotspot so a second device has an address
+         it can reach this phone's proxy on. Android gates WifiManager.startLocalOnlyHotspot()
+         behind a location permission because a Wi-Fi radio in AP mode is a location signal; the
+         app neither reads nor stores a location, and both are requested only at the moment the
+         user taps "turn on hotspot" on the Local Network screen, never at launch.
+
+         ACCESS_FINE_LOCATION is capped at API 32: from Android 13 NEARBY_WIFI_DEVICES covers
+         this on its own, and asking for location there would be asking for more than is used. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="tiramisu" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- The game booster's optional floating ping over the game. Granted by the player from the
+         booster's Advanced page ("display over other apps"); nothing is drawn without it. -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- TV Support Features -->
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <application
+        android:name=".MlmApp"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
+        tools:replace="android:fullBackupContent"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MLMVPNScanner"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:extractNativeLibs="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|keyboardHidden|screenSize|locale|layoutDirection|uiMode"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- VPN Service -->
+        <service
+            android:name=".MyVpnService"
+            android:exported="false"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <!-- AmneziaWG (GoBackend) establishes the WireGuard tun through its own internal
+             VpnService. It must be declared here or the tunnel comes up but no traffic flows.
+
+             android:process=":awg": the library hands this service to its GoBackend through a
+             static future, so the two must share a process, and the GoBackend lives in :awg
+             (AwgHostService), away from Xray's Go runtime. Do not remove. -->
+        <service
+            android:name="org.amnezia.awg.backend.AbstractBackend$VpnService"
+            android:exported="false"
+            android:process=":awg"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <!-- AwgHostService: the AmneziaWG tunnel, in its own process. AmneziaWG and Xray each
+             bring a Go runtime, and two in one process crash it; see the class doc. -->
+        <service
+            android:name="com.mlmvpn.core.warp.AwgHostService"
+            android:exported="false"
+            android:process=":awg" />
+
+        <!-- AwgProbeService: delay tests for servers only AmneziaWG can talk to, through the
+             library's SOCKS proxy mode. Its own process again: one Go runtime per process, and
+             the proxy backend keeps process-wide state the tunnel must not share. -->
+        <service
+            android:name="com.mlmvpn.core.warp.AwgProbeService"
+            android:exported="false"
+            android:process=":awgprobe" />
+
+        <!-- XrayProbeService: the delay-test cores of the «آمنزیا» section. A public server can
+             drive Xray into a Go panic, which aborts its whole process; here that is only this
+             one, never the app or its VPN. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayProbeService"
+            android:exported="false"
+            android:process=":xprobe" />
+
+        <service
+            android:name="com.mlmvpn.scanner.engines.scout.TunnelProbeService"
+            android:exported="false"
+            android:process=":scouttunnel" />
+
+        <!-- The shared Cloudflare WARP carrier (Windscribe, Outline): its WireGuard-through-noise
+             pairing can panic Xray, which here ends this process, not the app. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayCarrierService"
+            android:exported="false"
+            android:process=":xcarrier" />
+
+        <!-- Proton's Cloudflare carrier (ProtonCfCarrier): its core start/stop per candidate config
+             can panic Xray, which here ends this process, not the app. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayProtonCarrierService"
+            android:exported="false"
+            android:process=":pcarrier" />
+
+        <!-- The Xray an Aether session (and a WARP registration) dials out through to cut its TLS
+             ClientHello into records (AetherXrayExit): a panic ends this process, not the app. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayAetherExitService"
+            android:exported="false"
+            android:process=":aexit" />
+        <service
+            android:name="com.mlmvpn.core.warp.XrayAetherRegExitService"
+            android:exported="false"
+            android:process=":aregexit" />
+
+        <!-- Every delay test of the app (CombineEngine.measureDelay): a public config that panics
+             Xray ends this process, not the app. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayMeasureService"
+            android:exported="false"
+            android:process=":xmeasure" />
+
+        <!-- Every other Xray core the main process asks for (XrayHosts): the VPN's own core, MAE's
+             probe core, and the test cores of FLUX, the node list, the WireGuard scanner and
+             Windscribe. A Go panic in a core ends its host process, never the app; the VPN's
+             host gets the tun as a descriptor of its own. -->
+        <service
+            android:name="com.mlmvpn.core.warp.XrayTunnelHostService"
+            android:exported="false"
+            android:process=":xtun" />
+        <service
+            android:name="com.mlmvpn.core.warp.XrayMaeHostService"
+            android:exported="false"
+            android:process=":maeprobe" />
+        <service
+            android:name="com.mlmvpn.core.warp.XrayTestHostService"
+            android:exported="false"
+            android:process=":xtest" />
+
+        <!-- Scout's Psiphon test: Psiphon's Go runtime cannot share a process with Xray's. -->
+        <service
+            android:name="com.mlmvpn.scanner.engines.scout.PsiphonProbeService"
+            android:exported="false"
+            android:process=":psiprobe" />
+
+        <!-- «سایفون»'s real tests («آی‌پی تمیز», «پروکسی سرور»): up to six throwaway cores at once
+             (as many as the phone's memory allows), each in a process of its own, apart from
+             Scout's. See PsiphonProbes. -->
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot0"
+            android:exported="false"
+            android:process=":pstest0" />
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot1"
+            android:exported="false"
+            android:process=":pstest1" />
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot2"
+            android:exported="false"
+            android:process=":pstest2" />
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot3"
+            android:exported="false"
+            android:process=":pstest3" />
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot4"
+            android:exported="false"
+            android:process=":pstest4" />
+        <service
+            android:name="com.mlmvpn.core.tunnel.PsiphonTestSlot5"
+            android:exported="false"
+            android:process=":pstest5" />
+
+        <!-- «Open with» for WireGuard / AmneziaWG files from Telegram or a file manager: imports
+             them into the «آمنزیا» section and opens it. -->
+        <activity
+            android:name=".ui.amnezia.AmzImportActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.conf" />
+                <data android:pathPattern=".*\\..*\\.conf" />
+                <data android:pathPattern=".*\\..*\\..*\\.conf" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-wireguard-profile" />
+                <data android:mimeType="application/x-amneziawg-profile" />
+            </intent-filter>
+        </activity>
+
+        <!-- «Open with» / «Share» for NPV Tunnel files (.npvt, .npvs) and config links: into «NPV». -->
+        <activity
+            android:name=".ui.npv.NpvImportActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:label="NPV"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:host="*" />
+                <data android:pathPattern=".*\\.npvt" />
+                <data android:pathPattern=".*\\..*\\.npvt" />
+                <data android:pathPattern=".*\\.npvs" />
+                <data android:pathPattern=".*\\..*\\.npvs" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <!-- «انتقال» from a «گره» chat (n5): the configs go to their own sections here, in the main
+             process, then «open it?». Started from the chat's process over the chat, in its task, so
+             «stay» goes back to it. -->
+        <activity
+            android:name=".ui.GerehImportActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!--
+            WireguardScanService: legacy, hosts the old AmneziaWG-based WireGuard pipeline
+            that targeted a single UAE endpoint (203.0.113.20). That server is no longer
+            reachable from this application, so the service is left declared but unreachable
+            from the UI. It can be removed in a future cleanup pass once we're confident no
+            edge case still references it.
+        -->
+        <service
+            android:name=".engines.wireguard.WireguardScanService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <!-- tools:targetApi tells both the build tools AND the runtime package-parser
+                 that <property> + foregroundServiceType="specialUse" is API-34+. On
+                 older devices the entire property element and the FGS-type attribute are
+                 skipped cleanly instead of being silently rejected (which produces
+                 `ProcessRecord not found` later when ActivityManager tries to start the
+                 service). On API 34+ devices the element is parsed normally. -->
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Continues the wireguard endpoint scan in the background (legacy)"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            IpScanService: keeps the clean-IP scan alive while the app is in the background.
+
+            The scan runs for minutes on a blocked network. Without a foreground service the
+            process is subject to every background restriction the platform has, and on many OEM
+            builds its threads are frozen and its sockets dropped the moment the user looks at
+            something else — after which the scan either stalls silently or resumes into a network
+            that is gone and marks the rest of the address space dead. Both read to the user as a
+            scan that simply found nothing.
+
+            Same specialUse + tools:targetApi shape as the services above, for the same reason.
+        -->
+        <service
+            android:name=".data.IpScanService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Continues the clean-IP scan while the app is in the background"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            ScoutService: keeps an MLM Scout run alive (minutes, every method tested as a local
+            proxy) while the user is elsewhere, with a progress notification and a stop button.
+            Same specialUse shape as IpScanService above.
+        -->
+        <service
+            android:name=".engines.scout.ScoutService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Tests which of the app's connection methods work on the user's network"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            TgBridgeService: the Telegram proxy's bridge on the phone. Telegram connects to a plain
+            MTProxy on 127.0.0.1 and the bridge carries it to the user's own Cloudflare relay through
+            a clean edge address, so it has to keep running while the user is in Telegram.
+        -->
+        <service
+            android:name=".engines.tgproxy.TgBridgeService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Local proxy bridge that carries Telegram's connections to the user's own relay"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            GameBoostService: measures the routes to a game's servers, applies the best one and
+            keeps measuring it while the user plays. The user leaves for the game the moment the
+            boost is done, and on the direct route there is no VPN service to keep the process
+            alive, so the live reading needs a foreground service of its own.
+        -->
+        <service
+            android:name=".engines.game.booster.session.GameBoostService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Measures and monitors the network route to a game server while the user plays"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            AetherScanService: foreground service that drives the Aether Rust binary
+            (assets/aether/<abi>/aether), produces a SOCKS5 listener on 127.0.0.1:20810 and
+            exposes state through androidx StateFlow's that AetherScreen renders live.
+            Replaces WireguardScanService as the primary censorship-circumvention engine.
+        -->
+        <!--
+            IMPORTANT: fully-qualified class path is REQUIRED here.
+            The Kotlin class lives at `com.mlmvpn.core.aether.AetherScanService` (no
+            "scanner" segment). The app's `namespace = com.mlmvpn.scanner` would
+            otherwise prepend `.core.aether.AetherScanService` to a wrong class name
+            (`com.mlmvpn.scanner.core.aether.AetherScanService`), and PackageManager
+            would happily register it — but ActivityManager would then return
+            `not found` every time we try to start it from
+            `Intent(context, AetherScanService::class.java)`.
+        -->
+        <service
+            android:name="com.mlmvpn.core.aether.AetherScanService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Runs the Aether engine (MASQUE / WireGuard / WARP-in-WARP) for censorship circumvention"
+                tools:targetApi="34" />
+        </service>
+
+        <!-- SoftEther SSL-VPN (vendored kittoku.mvc client, Apache-2.0). Brings up its own
+             tun through its own VpnService, exactly like AmneziaWG above, so MyVpnService
+             deliberately skips setupVpn() on this path. -->
+        <service
+            android:name="kittoku.mvc.service.SoftEtherVpnService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            tools:targetApi="34">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Runs the SoftEther SSL-VPN tunnel"
+                tools:targetApi="34" />
+        </service>
+
+        <!--
+            Tun2proxyHostService: runs the tun2proxy native core, and NOTHING else, in its own
+            process. That core calls exit(255) from native code a few seconds after a normal
+            teardown; it cannot be caught or prevented, so it is confined here instead, where its
+            death costs nothing. The app's main process keeps its UI, VPN service and engine
+            state throughout. See the class doc for the full story.
+
+            android:process is the entire point of this declaration; do not remove it.
+        -->
+        <service
+            android:name=".tun.Tun2proxyHostService"
+            android:exported="false"
+            android:process=":tun" />
+
+        <!-- Delivers crash reports from the outbox (crashlogs/outbox) once there is a network,
+             retried with the scheduler's backoff. Scheduled by the crash handler just before the
+             process dies, so a report leaves whether or not the app is opened again. See
+             CrashReporter and docs/CRASH-REPORTS.md. -->
+        <service
+            android:name=".crash.CrashUploadJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- «کانفیگ استدیو» on each account's central Worker: the Worker cannot tell the time, so
+             this phone takes a person whose term ended off it (and puts back ids another device
+             dropped) about every half hour while there is a network. Uploads nothing when the
+             Worker is already in step. Scheduled by StudioCentralJob.ensure. -->
+        <service
+            android:name=".data.studio.central.StudioCentralJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- Quick Settings tile: one-tap toggle that connects to the fastest recent server. -->
+        <service
+            android:name=".VpnTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_vpn"
+            android:label="@string/tile_label_vpn"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- The SECOND Quick Settings tile, and not a relapse into the pair described below.
+             Those two did the same job (start a tunnel) through different services, so the user
+             had to know which stack was running. This one does a different job: it does not
+             start or stop anything, it decides whether the tunnel already running is published
+             to the rest of the network. -->
+        <service
+            android:name=".lan.LanTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_vpn"
+            android:label="@string/tile_label_lan"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- A THIRD tile, on the LAN tile's reasoning: a different job, not another way to start
+             a tunnel. It boosts the game last boosted (or stops the boost), and opens the booster
+             when the boost needs a screen (VPN permission, another connection on). -->
+        <service
+            android:name=".ui.game.GameBoostTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_notification"
+            android:label="@string/gb_tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- The copy / stop buttons on the Local Network notification. Not exported: the only
+             sender is our own PendingIntent. -->
+        <receiver
+            android:name=".lan.LanNotificationReceiver"
+            android:exported="false" />
+
+        <!-- ==========================================================================
+             The five Cloudflare/censorship transports: MASQUE, WireGuard, WARP-on-WARP,
+             Psiphon and Tor. They share one service because only one VpnService may hold
+             the device tun at a time, and it is deliberately NOT MyVpnService: this stack
+             owns its own tun, its own netstack and its own kill switch, and folding it
+             into the Xray path would put two very different lifecycles behind one switch.
+             The two are mutually exclusive at runtime; see TunnelExclusion.
+             ========================================================================== -->
+        <service
+            android:name="com.mlmvpn.core.tunnel.TunnelVpnService"
+            android:exported="false"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Carrying the device's traffic through an encrypted tunnel." />
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+        </service>
+
+        <!-- Brings that tunnel back after a reboot, when the user asked for it. Not
+             directBootAware and BOOT_COMPLETED only: the settings it reads live in
+             credential-encrypted storage, which does not exist until first unlock. -->
+        <receiver
+            android:name="com.mlmvpn.core.tunnel.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+            There is deliberately only ONE Quick Settings tile (.VpnTileService above).
+
+            There were two - one per VPN service - which asked the user to remember which of the
+            app's two stacks was carrying their traffic and pick the matching tile from the shade.
+            Picking the wrong one appeared to do nothing, because each reported the state of a
+            service the other was running. The single tile works it out from LastEngine instead.
+        -->
+
+        <!-- Exists only so a tile tap can collapse the Quick Settings shade; see the class. -->
+        <activity
+            android:name="com.mlmvpn.core.tunnel.ShadeCollapseActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoDisplay" />
+
+        <service android:name=".openvpn.OpenVpnService"
+            android:exported="false" android:permission="android.permission.BIND_VPN_SERVICE"
+            android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Internal OpenVPN encrypted network tunnel" />
+            <intent-filter><action android:name="android.net.VpnService" /></intent-filter>
+        </service>
+        <service android:name=".engines.windscribe.WsProxyService" android:exported="false" android:process=":wsproxy" />
+
+        <!-- ==========================================================================
+             Home-screen widgets. One per connection method (WidgetMethods; the two methods still
+             being built are in the debug manifest), and the three sizes of «ویجت استدیو».
+             Every tap goes to WidgetActionActivity, which may need the VPN consent dialog and
+             starts WidgetConnectService to carry the connect until the tunnel is up.
+             ========================================================================== -->
+        <receiver android:name=".widget.MasqueWidget" android:exported="true" android:label="@string/home_masque">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_masque" />
+        </receiver>
+        <receiver android:name=".widget.WireguardWidget" android:exported="true" android:label="@string/home_wireguard">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_wireguard" />
+        </receiver>
+        <receiver android:name=".widget.WarpOnWarpWidget" android:exported="true" android:label="@string/home_warp_on_warp">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_warp_on_warp" />
+        </receiver>
+        <receiver android:name=".widget.WarpWidget" android:exported="true" android:label="@string/home_warp">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_warp" />
+        </receiver>
+        <receiver android:name=".widget.PsiphonWidget" android:exported="true" android:label="@string/home_psiphon">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_psiphon" />
+        </receiver>
+        <receiver android:name=".widget.TorWidget" android:exported="true" android:label="@string/home_tor">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_tor" />
+        </receiver>
+        <receiver android:name=".widget.GephWidget" android:exported="true" android:label="@string/home_geph">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_geph" />
+        </receiver>
+        <receiver android:name=".widget.LanternWidget" android:exported="true" android:label="@string/home_lantern">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_lantern" />
+        </receiver>
+        <receiver android:name=".widget.UrnetworkWidget" android:exported="true" android:label="@string/home_urnetwork">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_urnetwork" />
+        </receiver>
+        <receiver android:name=".widget.QuickWidget" android:exported="true" android:label="@string/home_quick">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_quick" />
+        </receiver>
+        <receiver android:name=".widget.MaeWidget" android:exported="true" android:label="@string/mae_short">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_mae" />
+        </receiver>
+        <receiver android:name=".widget.FluxWidget" android:exported="true" android:label="@string/flux_title_short">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_flux" />
+        </receiver>
+        <receiver android:name=".widget.FenixWidget" android:exported="true" android:label="@string/fenix_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_fenix" />
+        </receiver>
+        <receiver android:name=".widget.AmneziaWidget" android:exported="true" android:label="@string/amz_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_amnezia" />
+        </receiver>
+        <receiver android:name=".widget.ProtonWidget" android:exported="true" android:label="@string/proton_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_proton" />
+        </receiver>
+        <receiver android:name=".widget.WindscribeWidget" android:exported="true" android:label="@string/windscribe_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_windscribe" />
+        </receiver>
+        <receiver android:name=".widget.OutlineWidget" android:exported="true" android:label="@string/outline_title">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_outline" />
+        </receiver>
+        <receiver android:name=".widget.NpvWidget" android:exported="true" android:label="@string/home_npv">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_npv" />
+        </receiver>
+        <receiver android:name=".widget.GithubWidget" android:exported="true" android:label="@string/home_github">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_github" />
+        </receiver>
+        <receiver android:name=".widget.VpnGateWidget" android:exported="true" android:label="@string/home_gateway">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_vpngate" />
+        </receiver>
+        <receiver android:name=".widget.OpenVpnWidget" android:exported="true" android:label="@string/home_openvpn">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_openvpn" />
+        </receiver>
+        <receiver android:name=".widget.V2rayWidget" android:exported="true" android:label="@string/home_v2ray">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_nodes" />
+        </receiver>
+        <receiver android:name=".widget.IranWidget" android:exported="true" android:label="@string/home_iran">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_iran" />
+        </receiver>
+        <receiver android:name=".widget.FrontingWidget" android:exported="true" android:label="@string/home_fronting">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_fronting" />
+        </receiver>
+        <receiver android:name=".widget.AntiSanctionWidget" android:exported="true" android:label="@string/home_antisanction">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_antisanction" />
+        </receiver>
+        <receiver android:name=".widget.EmergencyGstWidget" android:exported="true" android:label="@string/home_emergency_2">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_emergency_2" />
+        </receiver>
+        <receiver android:name=".widget.EmergencySniWidget" android:exported="true" android:label="@string/home_emergency_3">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_method_emergency_3" />
+        </receiver>
+        <!-- «گره»: unread count and network state, written by Gereh's bridge in :chat (GerehWidget.kt). -->
+        <receiver android:name=".widget.GerehWidget" android:exported="true" android:label="@string/home_mlmchat">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_gereh" />
+        </receiver>
+
+        <receiver android:name=".widget.studio.StudioWidgetSmall" android:exported="true" android:label="@string/widget_studio_small">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_studio_small" />
+        </receiver>
+        <receiver android:name=".widget.studio.StudioWidgetMedium" android:exported="true" android:label="@string/widget_studio_medium">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_studio_medium" />
+        </receiver>
+        <receiver android:name=".widget.studio.StudioWidgetLarge" android:exported="true" android:label="@string/widget_studio_large">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_studio_large" />
+        </receiver>
+
+        <!-- The pin request's callback: the launcher placed a studio widget. Only our own
+             PendingIntent sends it. -->
+        <receiver android:name=".widget.studio.StudioPinReceiver" android:exported="false" />
+
+        <!-- Exported because the launcher opens it when a studio widget is placed or reconfigured;
+             it checks that the widget id is one of ours before binding anything. -->
+        <activity
+            android:name=".widget.studio.StudioConfigureActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.MLMVPNScanner">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Not noHistory: it must still be there when the VPN consent dialog answers. Its own
+             empty affinity keeps it out of the app's task and out of recents. -->
+        <activity
+            android:name=".widget.WidgetActionActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Widget.Trampoline" />
+
+        <service
+            android:name=".widget.WidgetConnectService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            tools:targetApi="34">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps a connect started from a home-screen widget alive until the chosen VPN method is up"
+                tools:targetApi="34" />
+        </service>
+
+        <!-- FileProvider: shares the downloaded update APK (in cache dir) with the system
+             package installer. Required on API 24+, since raw file:// URIs are blocked. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+</manifest>
