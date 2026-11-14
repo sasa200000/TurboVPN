@@ -110,19 +110,29 @@ fun FenixScreen(onBack: () -> Unit) {
     }
     var page by rememberSaveable { mutableStateOf(Page.MAIN) }
     var back by rememberSaveable { mutableStateOf(Page.MAIN) }
+    // Where the browser-check page returns to: the page that was up when Mozilla asked for it
+    // (the email form or Mozilla's own page), NOT the screen `open` would send back to.
+    var checkReturn by rememberSaveable { mutableStateOf(Page.MAIN) }
     fun open(p: Page) { back = if (page == Page.ACCOUNTS) Page.ACCOUNTS else Page.MAIN; page = p }
 
     val challenge by FenixEngine.challenge.collectAsState()
     val signIn by FenixEngine.signIn.collectAsState()
-    // Mozilla asked for its browser check: its page opens, the user passes it, and back we come.
-    LaunchedEffect(challenge) { if (challenge && page != Page.WEB_CHECK && page != Page.WEB_ADD) open(Page.WEB_CHECK) }
+    // Mozilla asked for its browser check: its page opens, the user passes it, and back we come —
+    // to the very page they were on (the email form included), with its fields intact.
+    LaunchedEffect(challenge) {
+        if (challenge && page != Page.WEB_CHECK && page != Page.WEB_ADD) { checkReturn = page; page = Page.WEB_CHECK }
+    }
     // An account was added: back to where the user came from.
     LaunchedEffect(signIn) {
         if (signIn is SignIn.Done) { FenixEngine.resetSignIn(); if (page == Page.WEB_ADD) page = back }
     }
     BackHandler(enabled = page != Page.MAIN) {
         if (page == Page.WEB_CHECK) FenixEngine.dismissChallenge()
-        page = if (page == Page.WEB_ADD || page == Page.WEB_CHECK) back else Page.MAIN
+        page = when (page) {
+            Page.WEB_ADD -> back
+            Page.WEB_CHECK -> checkReturn
+            else -> Page.MAIN
+        }
     }
     when (page) {
         Page.COUNTRY -> { FenixCountryPicker(onBack = { page = Page.MAIN }); return }
@@ -131,7 +141,7 @@ fun FenixScreen(onBack: () -> Unit) {
         Page.FORM -> { EmailSignInPage(onBack = { page = back }); return }
         Page.WEB_CHECK -> {
             val host by FenixEngine.challengeHost.collectAsState()
-            MozillaCheckPage(host) { cookies, agent -> FenixEngine.challengePassed(host, cookies, agent); page = back }
+            MozillaCheckPage(host) { cookies, agent -> FenixEngine.challengePassed(host, cookies, agent); page = checkReturn }
             return
         }
         Page.MAIN -> Unit
