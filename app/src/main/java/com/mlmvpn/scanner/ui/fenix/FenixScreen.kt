@@ -585,10 +585,10 @@ private fun cookies(host: String? = null): Map<String, String?> {
 /** The interactive page whose check Fastly honours for [host] and its site. */
 private fun checkUrlFor(host: String): String = when {
     // Firefox Accounts' interactive page (the API host's root is bare JSON).
-    FenixHttp.siteOf(host) == "firefox.com" -> "https://accounts.firefox.com/"
+    com.mlmvpn.scanner.engines.fenix.FenixHttp.siteOf(host) == "firefox.com" -> "https://accounts.firefox.com/"
     // Guardian's own page is interactive; only api.accounts.firefox.com is not.
     host == "vpn.mozilla.org" -> "https://vpn.mozilla.org/"
-    FenixHttp.siteOf(host) == "mozilla.org" -> "https://www.mozilla.org/"
+    com.mlmvpn.scanner.engines.fenix.FenixHttp.siteOf(host) == "mozilla.org" -> "https://www.mozilla.org/"
     host.startsWith("api.") || host.startsWith("oauth.") -> "https://${host.removePrefix("api.").removePrefix("oauth.")}/"
     else -> "https://$host/"
 }
