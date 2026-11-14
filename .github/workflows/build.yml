@@ -26,15 +26,17 @@ jobs:
           sdkmanager "platforms;android-36" "build-tools;36.0.0" "platform-tools" > /dev/null 2>&1 || true
           sdkmanager --list_installed 2>/dev/null | grep -E "android-36|build-tools;36" || true
 
-      - name: Restore native libs from the latest official release APK
+      - name: Restore native libs from official release APK
         run: |
-          # Always pull the newest official release so the native libraries
-          # (.so) match what the upstream app currently ships - no manual
-          # version bump needed when a new release comes out.
-          LATEST=$(curl -s https://api.github.com/repos/mlmvpn/mlmvpn_android/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
-          echo "Latest upstream release: $LATEST"
-          wget -q "https://github.com/mlmvpn/mlmvpn_android/releases/download/${LATEST}/mlmvpn-${LATEST#v}-arm64-v8a-release.apk" -O official-arm64.apk
-          wget -q "https://github.com/mlmvpn/mlmvpn_android/releases/download/${LATEST}/mlmvpn-${LATEST#v}-armeabi-v7a-release.apk" -O official-armv7.apk
+          # Native libraries (.so) come from upstream release v1.2.48 — the LAST
+          # release that still bundles them inside the APK. From v1.2.49 upstream
+          # moved tunnelcore/lantern/urnetwork/aether/tor and friends into its own
+          # in-app store channel, so newer release APKs are missing them and the
+          # engines would show "not installed".
+          UPSTREAM_TAG=v1.2.48
+          echo "Upstream release: $UPSTREAM_TAG"
+          wget -q "https://github.com/mlmvpn/mlmvpn_android/releases/download/${UPSTREAM_TAG}/mlmvpn-${UPSTREAM_TAG#v}-arm64-v8a-release.apk" -O official-arm64.apk
+          wget -q "https://github.com/mlmvpn/mlmvpn_android/releases/download/${UPSTREAM_TAG}/mlmvpn-${UPSTREAM_TAG#v}-armeabi-v7a-release.apk" -O official-armv7.apk
           mkdir -p app/src/main/jniLibs/arm64-v8a app/src/main/jniLibs/armeabi-v7a
           unzip -o -q official-arm64.apk 'lib/arm64-v8a/*' -d extract64
           unzip -o -q official-armv7.apk 'lib/armeabi-v7a/*' -d extract32
