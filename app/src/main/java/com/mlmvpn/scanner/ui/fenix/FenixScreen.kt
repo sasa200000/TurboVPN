@@ -582,6 +582,17 @@ private fun cookies(host: String? = null): Map<String, String?> {
  * passes it as in any browser, and its cookies carry the app's calls from then on.
  */
 @SuppressLint("SetJavaScriptEnabled")
+/** The interactive page whose check Fastly honours for [host] and its site. */
+private fun checkUrlFor(host: String): String = when {
+    // Firefox Accounts' interactive page (the API host's root is bare JSON).
+    FenixHttp.siteOf(host) == "firefox.com" -> "https://accounts.firefox.com/"
+    // Guardian's own page is interactive; only api.accounts.firefox.com is not.
+    host == "vpn.mozilla.org" -> "https://vpn.mozilla.org/"
+    FenixHttp.siteOf(host) == "mozilla.org" -> "https://www.mozilla.org/"
+    host.startsWith("api.") || host.startsWith("oauth.") -> "https://${host.removePrefix("api.").removePrefix("oauth.")}/"
+    else -> "https://$host/"
+}
+
 @Composable
 private fun MozillaCheckPage(host: String, onDone: (Map<String, String?>, String?) -> Unit) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -611,9 +622,11 @@ private fun MozillaCheckPage(host: String, onDone: (Map<String, String?>, String
                                 }
                             }
                         }
-                        // the page of the host that asked: Firefox Accounts', or Guardian's
-                        // (vpn.mozilla.org), each with a check of its own (31 Oct 2026)
-                        loadUrl("https://$host/")
+                        // The page of the SITE the host belongs to — never the API host itself:
+                        // api.accounts.firefox.com's root is bare JSON (its title is not "Challenge"),
+                        // so loading it ended the check at once, having passed nothing, and every
+                        // retry hit the same 406. The interactive page lives on the site's web root.
+                        loadUrl(checkUrlFor(host))
                     }
                 } },
             )
