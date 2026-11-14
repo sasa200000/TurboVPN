@@ -87,7 +87,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Locale
 
-private enum class Page { MAIN, COUNTRY, ACCOUNTS, WEB_ADD, WEB_CHECK }
+private enum class Page { MAIN, COUNTRY, ACCOUNTS, WEB_ADD, WEB_CHECK, FORM }
 
 /** Mozilla's own sign-in page: it asks for an email and then signs in, or makes the account. */
 private const val ACCOUNTS_URL = "https://accounts.firefox.com/"
@@ -128,6 +128,7 @@ fun FenixScreen(onBack: () -> Unit) {
         Page.COUNTRY -> { FenixCountryPicker(onBack = { page = Page.MAIN }); return }
         Page.ACCOUNTS -> { AccountsPage(onBack = { page = Page.MAIN }, onAdd = { open(Page.WEB_ADD) }); return }
         Page.WEB_ADD -> { MozillaSignInPage(onBack = { page = back }); return }
+        Page.FORM -> { EmailSignInPage(onBack = { page = back }); return }
         Page.WEB_CHECK -> {
             val host by FenixEngine.challengeHost.collectAsState()
             MozillaCheckPage(host) { cookies, agent -> FenixEngine.challengePassed(host, cookies, agent); page = back }
@@ -152,7 +153,7 @@ fun FenixScreen(onBack: () -> Unit) {
             textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 4.dp),
         )
         Spacer(Modifier.height(14.dp))
-        if (accounts.isEmpty()) Welcome(onAdd = { open(Page.WEB_ADD) })
+        if (accounts.isEmpty()) Welcome(onAdd = { open(Page.WEB_ADD) }, onForm = { open(Page.FORM) })
         else Ready(accounts, onCountry = { page = Page.COUNTRY }, onAccounts = { page = Page.ACCOUNTS })
         Spacer(Modifier.height(40.dp))
     }
@@ -161,9 +162,13 @@ fun FenixScreen(onBack: () -> Unit) {
 // ── no account yet ──────────────────────────────────────────────────────────────────────────────
 
 @Composable
-private fun Welcome(onAdd: () -> Unit) {
+private fun Welcome(onAdd: () -> Unit, onForm: () -> Unit) {
     val error by FenixEngine.signInError.collectAsState()
     PrimaryButton(stringResource(R.string.fenix_add_web), enabled = true, onClick = onAdd)
+    Spacer(Modifier.height(8.dp))
+    // Email sign-in inside the app: works even when Mozilla's web page is unreachable or its
+    // browser check never passes in the WebView.
+    PrimaryButton(stringResource(R.string.fenix_add_form), enabled = true, onClick = onForm)
     SettingsFooter(stringResource(R.string.fenix_add_web_footer))
     error?.let { ErrorText(it) }
 }
@@ -338,6 +343,132 @@ private fun agoText(at: Long): String {
         min < 1 -> stringResource(R.string.fenix_ago_now)
         min < 60 -> stringResource(R.string.fenix_ago_min, faDigits(min.toString()))
         else -> stringResource(R.string.fenix_ago_hour, faDigits((min / 60).toString()))
+    }
+}
+
+// ── adding an account: email + password, inside the app ────────────────────────────────────────
+
+/**
+ * Mozilla's email/password sign-in, spoken by the app itself (FenixAuth's onepw + Hawk).
+ * Shown beside Mozilla's own page: on lines where the page's browser check will not pass,
+ * this still adds the account. A mailed code, when asked, is entered here too.
+ */
+@Composable
+private fun EmailSignInPage(onBack: () -> Unit) {
+    val signIn by FenixEngine.signIn.collectAsState()
+    val error by FenixEngine.signInError.collectAsState()
+    val busy = signIn is SignIn.Busy
+    val needCode = signIn is SignIn.NeedCode
+
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+    var code by rememberSaveable { mutableStateOf("") }
+    var showPassword by rememberSaveable { mutableStateOf(false) }
+
+    IosScreen(
+        title = stringResource(R.string.fenix_form_title),
+        onBack = onBack,
+        backLabel = stringResource(R.string.fenix_title),
+    ) {
+        Spacer(Modifier.height(8.dp))
+        Text(
+            if (needCode) stringResource(R.string.fenix_form_code_hint, (signIn as SignIn.NeedCode).email)
+            else stringResource(R.string.fenix_form_hint),
+            color = Ios.SecondaryLabel, fontSize = 13.sp, textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 6.dp),
+        )
+        Spacer(Modifier.height(10.dp))
+        SettingsGroup {
+            if (!needCode) {
+                SettingsTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = stringResource(R.string.fenix_form_email),
+                    enabled = !busy,
+                    keyboard = androidx.compose.foundation.text.KeyboardOptions(
+                        keyboardType = androidx.compose.ui.text.input.KeyboardType.Email,
+                        autoCorrect = false,
+                    ),
+                )
+                Separator()
+                SettingsTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = stringResource(R.string.fenix_form_password),
+                    enabled = !busy,
+                    hidden = !showPassword,
+                    trailing = {
+                        Text(
+                            if (showPassword) stringResource(R.string.fenix_form_hide) else stringResource(R.string.fenix_form_show),
+                            color = Ios.Blue, fontSize = 13.sp, fontWeight = FontWeight.Medium,
+                            modifier = Modifier
+                                .clickable(enabled = !busy) { showPassword = !showPassword }
+                                .padding(horizontal = 10.dp, vertical = 4.dp),
+                        )
+                    },
+                )
+            } else {
+                SettingsTextField(
+                    value = code,
+                    onValueChange = { code = it },
+                    label = stringResource(R.string.fenix_form_code),
+                    enabled = !busy,
+                    keyboard = androidx.compose.foundation.text.KeyboardOptions(
+                        keyboardType = androidx.compose.ui.text.input.KeyboardType.Number,
+                        autoCorrect = false,
+                    ),
+                )
+            }
+        }
+        error?.let { ErrorText(it) }
+        Spacer(Modifier.height(14.dp))
+        PrimaryButton(
+            if (needCode) stringResource(R.string.fenix_form_verify) else stringResource(R.string.fenix_form_submit),
+            enabled = if (needCode) code.isNotBlank() else email.isNotBlank() && password.isNotBlank(),
+            busy = busy,
+        ) {
+            if (needCode) FenixEngine.verifyCode(code) else FenixEngine.signIn(email, password)
+        }
+        if (needCode) {
+            Spacer(Modifier.height(8.dp))
+            // Wrong address? Start over with another one.
+            Text(
+                stringResource(R.string.fenix_form_restart),
+                color = Ios.Blue, fontSize = 13.sp,
+                modifier = Modifier
+                    .clickable(enabled = !busy) { FenixEngine.resetSignIn() }
+                    .padding(horizontal = 16.dp, vertical = 6.dp),
+            )
+        }
+        Spacer(Modifier.height(30.dp))
+    }
+}
+
+/** One labelled input row, iOS-styled, matching the settings groups around it. */
+@Composable
+private fun SettingsTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    enabled: Boolean = true,
+    hidden: Boolean = false,
+    keyboard: androidx.compose.foundation.text.KeyboardOptions =
+        androidx.compose.foundation.text.KeyboardOptions.Default,
+    trailing: @Composable (() -> Unit)? = null,
+) {
+    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+        androidx.compose.material3.OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            label = { Text(label) },
+            enabled = enabled,
+            singleLine = true,
+            visualTransformation = if (hidden) androidx.compose.ui.text.input.PasswordVisualTransformation()
+                else androidx.compose.ui.text.input.VisualTransformation.None,
+            keyboardOptions = keyboard,
+            modifier = Modifier.weight(1f),
+        )
+        trailing?.invoke()
     }
 }
 
