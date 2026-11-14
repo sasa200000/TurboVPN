@@ -183,24 +183,14 @@ class MainActivity : AppCompatActivity() {
                                     com.mlmvpn.scanner.ui.IntroState.played
                                 )
                             }
-                            val unlocked = androidx.compose.runtime.remember {
-                                androidx.compose.runtime.mutableStateOf(
-                                    com.mlmvpn.scanner.subscription.SubscriptionStore.isSubscribed(this@MainActivity)
-                                )
-                            }
-                            if (unlocked.value) {
-                                com.mlmvpn.scanner.ui.AppScreen()
-                                if (!splashDone.value) {
-                                    com.mlmvpn.scanner.ui.SplashScreen(
-                                        onFinished = {
-                                            splashDone.value = true
-                                            com.mlmvpn.scanner.ui.IntroState.played = true
-                                        }
-                                    )
-                                }
-                            } else {
-                                com.mlmvpn.scanner.ui.gate.SubscriptionGateScreen(
-                                    onSuccess = { unlocked.value = true }
+                            // Subscription gate removed: the app is free for everyone.
+                            com.mlmvpn.scanner.ui.AppScreen()
+                            if (!splashDone.value) {
+                                com.mlmvpn.scanner.ui.SplashScreen(
+                                    onFinished = {
+                                        splashDone.value = true
+                                        com.mlmvpn.scanner.ui.IntroState.played = true
+                                    }
                                 )
                             }
                             }

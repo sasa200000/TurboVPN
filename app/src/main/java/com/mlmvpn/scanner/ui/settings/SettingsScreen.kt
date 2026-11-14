@@ -124,7 +124,6 @@ private const val P_USAGE = "usage_page"
 // row of that group, and the changelog under it is a route like any other rather than a flag held
 // inside the screen. That is what puts both in the detail pane on a tablet or a television.
 private const val P_ABOUT = "about_page"
-private const val P_ADMIN = "admin_panel"
 private const val P_NEON = "neon_style"
 private const val P_ABOUT_CHANGELOG = "about_changelog_page"
 
@@ -332,7 +331,6 @@ fun SettingsScreen(
     // Which page each row is on, for the row the home screen's search opened Settings for.
     androidx.compose.runtime.CompositionLocalProvider(LocalSettingsRoute provides (routeKey ?: SettingsRoutes.ROOT)) {
     when (routeKey) {
-        P_ADMIN -> com.mlmvpn.scanner.ui.gate.AdminPanelScreen(onBack = { pop() })
         P_NEON -> com.mlmvpn.scanner.ui.gate.NeonStylePage(onBack = { pop() })
 
         P_LANGUAGE -> IosPickerScreen(
@@ -754,12 +752,8 @@ fun SettingsScreen(
                 }
             }
 
-            SettingsSectionHeader(com.mlmvpn.scanner.store.tr("اشتراک و نمایش", "Subscription & Display"))
+            SettingsSectionHeader(com.mlmvpn.scanner.store.tr("نمایش", "Display"))
             SettingsGroup {
-                com.mlmvpn.scanner.ui.gate.ExpandedSubscriptionCard(
-                    onOpenAdmin = { push(P_ADMIN) },
-                )
-                Separator()
                 SettingsRow(
                     title = com.mlmvpn.scanner.store.tr("رقص نور نئونی", "Neon Light Effect"),
                     subtitle = com.mlmvpn.scanner.store.tr("نور اطراف دکمه‌ها و سرورها", "Glow around buttons and servers"),
