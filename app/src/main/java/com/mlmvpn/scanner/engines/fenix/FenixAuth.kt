@@ -123,8 +123,22 @@ internal class FenixAuth(private val store: FenixStore) {
         return try {
             call("POST", "/account/login", null, body)
         } catch (e: ApiError) {
+            // 102: no such account — the email is not registered yet. Register it.
+            if (e.errno == 102 && withMethod) signup(email, password)
             // Accounts that cannot take the email-code method say "invalid parameter" (107).
-            if (e.errno == 107 && withMethod) login(email, password, withMethod = false) else throw e
+            else if (e.errno == 107 && withMethod) login(email, password, withMethod = false)
+            else throw e
+        }
+    }
+
+    private suspend fun signup(email: String, password: String): JSONObject {
+        val body = JSONObject().put("email", email).put("authPW", authPw(email, password))
+        return try {
+            call("POST", "/account/create", null, body)
+        } catch (e: ApiError) {
+            // If the email is already taken (errno 101), surface the login error instead.
+            if (e.errno == 101) throw ApiError("email already registered — please sign in", e.errno, e.status)
+            throw e
         }
     }
 

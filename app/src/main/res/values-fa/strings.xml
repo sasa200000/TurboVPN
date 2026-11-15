@@ -5269,8 +5269,8 @@
     <string name="fenix_quota_value">%1$s از %2$s گیگ</string>
     <string name="fenix_quota_footer">محدودیت ماهانه است: هر حساب ماهی ۵۰ گیگ، و هر ماه دوباره پر می‌شود. با چند حساب، حجم آن‌ها با هم جمع می‌شود.</string>
     <string name="fenix_add_form">ورود با ایمیل و رمز</string>
-    <string name="fenix_form_title">ورود با ایمیل</string>
-    <string name="fenix_form_hint">ایمیل و رمز حساب فایرفاکس‌ات را بزن؛ اگر موزیلا کد ایمیل کرد، در همین صفحه واردش کن.</string>
+    <string name="fenix_form_title">ورود یا ثبت‌نام</string>
+    <string name="fenix_form_hint">ایمیل و رمز حساب فایرفاکس را بزن؛ اگه حساب نداری همین‌جا بسازش. اگه موزیلا کد فرستاد، همین‌جا واردش کن.</string>
     <string name="fenix_form_code_hint">کدی که به %s فرستاده شد را وارد کن.</string>
     <string name="fenix_form_email">ایمیل</string>
     <string name="fenix_form_password">رمز</string>

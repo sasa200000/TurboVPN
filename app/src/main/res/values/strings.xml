@@ -5277,13 +5277,13 @@ After that it builds the combinations itself, measures every one with a real req
     <string name="fenix_quota_value">%1$s of %2$s GB</string>
     <string name="fenix_quota_footer">The limit is monthly: 50 GB per account, refilled every month. With several accounts their data adds up.</string>
     <string name="fenix_add_form">Sign in with email and password</string>
-    <string name="fenix_form_title">Sign in with email</string>
-    <string name="fenix_form_hint">Enter your Firefox account\'s email and password; if Mozilla emails a code, enter it here.</string>
+    <string name="fenix_form_title">Sign in / Sign up</string>
+    <string name="fenix_form_hint">Enter your Firefox account\'s email and password — or a new email to create an account. If Mozilla emails a code, enter it here.</string>
     <string name="fenix_form_code_hint">Enter the code emailed to %s.</string>
     <string name="fenix_form_email">Email</string>
     <string name="fenix_form_password">Password</string>
     <string name="fenix_form_code">Emailed code</string>
-    <string name="fenix_form_submit">Sign in</string>
+    <string name="fenix_form_submit">Sign in / Sign up</string>
     <string name="fenix_form_verify">Verify code</string>
     <string name="fenix_form_restart">Start over with another email</string>
     <string name="fenix_form_show">Show</string>
